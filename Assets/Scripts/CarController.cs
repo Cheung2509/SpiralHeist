@@ -18,9 +18,9 @@ public class CarController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		if (Input.GetKeyDown("W"))
+		if (Input.GetKeyDown("w"))
         {
-            rb.velocity += (Vector3.forward * acceleration);
+            rb.velocity += (transform.forward * acceleration);
         }
 	}
 }
