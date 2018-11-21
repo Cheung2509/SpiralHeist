@@ -15,18 +15,19 @@ public class CarController : MonoBehaviour
     private float actualAcceleration = 0.0f;
     private float actualRotation = 0.0f;
 
-	// Use this for initialization
 	void Start ()
     {
         rb = GetComponent<Rigidbody>();        
 	}
 	
-	// Update is called once per frame
 	void Update ()
     {
+        float v = Vector3.Dot(rb.velocity.normalized, transform.forward);
+            
+        Debug.Log(rb.velocity.normalized);
+               
         #region linear
 
-        // if holding forward
         if (Input.GetKey("w"))
         {
             // if not acceleration fastest
@@ -36,13 +37,26 @@ public class CarController : MonoBehaviour
                 actualAcceleration += acceleration;
             }
         }
+        else if (Input.GetKey("s"))
+        {
+            // if not acceleration fastest
+            if (actualAcceleration > -maxSpeed)
+            {
+                // speed up
+                actualAcceleration -= acceleration;
+            }
+        }
         else
         {
-            // if moving forward
-            if (actualAcceleration > 0.0f)
+            // if moving
+            if (actualAcceleration > 0.1f || actualAcceleration < -0.1f)
             {
                 // slow down
-                actualAcceleration -= acceleration;
+                actualAcceleration *= 0.9f;
+            }
+            else
+            {
+                actualAcceleration = 0.0f;
             }
         }
 
@@ -50,26 +64,25 @@ public class CarController : MonoBehaviour
 
         #region angular
 
-        // if holding left
+        // if intending to turn left
         if (Input.GetKey("a"))
         {
-            // if 
             if (actualRotation < maxRotateSpeed)
             {
                 actualRotation += rotation;
             }
         }
 
+        // if intending to turn right
         if (Input.GetKey("d"))
         {
-            // if 
             if (actualRotation > -maxRotateSpeed)
             {
                 actualRotation -= rotation;
             }
         }
 
-
+        // if not rotating
         if (!(Input.GetKey("a")) && !(Input.GetKey("d")))
         {
             if (actualRotation > 0.1f)
@@ -87,21 +100,29 @@ public class CarController : MonoBehaviour
         }
 
         #endregion
-
-        // apply linear motion
-        if (acceleration != 0.0f)
+        
+        // if under speed limit
+        if ((rb.velocity.x < maxSpeed && rb.velocity.x > -maxSpeed) && (rb.velocity.z < maxSpeed && rb.velocity.z > -maxSpeed))
         {
-            rb.velocity = (transform.forward * actualAcceleration);
+            // if above minimum threshold
+            if (Mathf.Abs(actualAcceleration) > 0.1f)
+            {
+                // apply linear motion
+                rb.velocity += (transform.forward * actualAcceleration);
+            }
         }
 
-        // apply angular motion
+        // if right
         if (actualRotation > 0.1f)
         {
-            rb.rotation = Quaternion.RotateTowards(rb.rotation, rot.transform.rotation, actualRotation);
+            // apply angular motion
+            transform.rotation = Quaternion.RotateTowards(rb.rotation, rot.transform.rotation, actualRotation);
         }
+        // if left
         else if (actualRotation < -0.1f)
         {
-            rb.rotation = Quaternion.RotateTowards(rb.rotation, rot.transform.rotation, actualRotation);
+            // apply angular motion
+            transform.rotation = Quaternion.RotateTowards(rb.rotation, rot.transform.rotation, actualRotation);
         }
     }     
 }
