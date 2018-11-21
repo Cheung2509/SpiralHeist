@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarAI : MonoBehaviour
+public class VehicleAI : MonoBehaviour
 {
     [SerializeField]
     private float speed = 0.0f;
@@ -12,6 +12,9 @@ public class CarAI : MonoBehaviour
     private float maxDistance = 10000.0f;
     [SerializeField]
     private float distance = 0.0f;
+
+    public float distanceToRear = 0.0f;
+    public float distanceToFront = 0.0f;
 
     void Update()
     {
@@ -42,5 +45,5 @@ public class CarAI : MonoBehaviour
     public void SetMaxDistance(float value)
     {
         maxDistance = value;
-    }
+    }  
 }

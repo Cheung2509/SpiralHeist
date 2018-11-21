@@ -5,52 +5,93 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public float timeBetweenSpawns = 0.0f;
-    public float carStartSpeed = 0.0f;
-    public bool carHasLifetime = false;
-    public float carLifetime = 0.0f;
-    public bool carHasMaxDistance = false;
-    public float carMaxDistance = 0.0f;
+    public float vehicleStartSpeed = 0.0f;
+    public bool vehicleHasLifetime = false;
+    public float vehicleLifetime = 0.0f;
+    public bool vehicleHasMaxDistance = false;
+    public float vehicleMaxDistance = 0.0f;
+    public float separation = 0.0f;
 
     private GameObject player;
+    private GameObject vehicle;
+    private VehicleAI ai;
+    private GameObject tempVehicle;
 
     [SerializeField]
     private float timeSinceLastSpawn = 0.0f;
     [SerializeField]
-    private List<GameObject> carTypes;
+    private List<GameObject> VehicleTypes;
+    [SerializeField]
+    private float distanceToLastSpawned = 10000.0f;
+    [SerializeField]
+    private float necessaryDistanceToSpawn = 0.0f;
+    [SerializeField]
+    private bool nextVehiclePicked = false;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        vehicle = null;
+        tempVehicle = null;
 
-        carTypes = GameObject.FindGameObjectWithTag("CarTypes").GetComponent<ListOfCarTypes>().GetList();
+        VehicleTypes = GameObject.FindGameObjectWithTag("CarTypes").GetComponent<ListOfVehicleTypes>().GetList();
     }
 
     void Update ()
     {
-		if (Vector3.Distance(transform.position, player.transform.position) < carMaxDistance)
+		if (Vector3.Distance(transform.position, player.transform.position) < vehicleMaxDistance)
         {
             timeSinceLastSpawn += Time.deltaTime;
         }
 
-        if (timeSinceLastSpawn > timeBetweenSpawns)
+        if (!nextVehiclePicked)
         {
-            GameObject car = Instantiate(carTypes[Random.Range(0, carTypes.Count)], transform);
+            tempVehicle = VehicleTypes[Random.Range(0, VehicleTypes.Count)];
 
-            CarAI ai = car.GetComponent<CarAI>();
-
-            ai.SetSpeed(carStartSpeed);
-
-            if (carHasLifetime)
+            if (vehicle != null)
             {
-                ai.SetTimeUntilDeath(carLifetime);
+                necessaryDistanceToSpawn = ai.distanceToRear + separation + tempVehicle.GetComponent<VehicleAI>().distanceToFront;
+            }
+            else
+            {
+                necessaryDistanceToSpawn = 0.0f;
             }
 
-            if (carHasMaxDistance)
+            nextVehiclePicked = true;
+        }
+
+        if (timeSinceLastSpawn > timeBetweenSpawns && distanceToLastSpawned > necessaryDistanceToSpawn)
+        {                      
+            vehicle = Instantiate(tempVehicle, transform);
+
+            ai = vehicle.GetComponent<VehicleAI>();
+
+            ai.SetSpeed(vehicleStartSpeed);
+
+            if (vehicleHasLifetime)
             {
-                ai.SetMaxDistance(carMaxDistance);
+                ai.SetTimeUntilDeath(vehicleLifetime);
             }
 
+            if (vehicleHasMaxDistance)
+            {
+                ai.SetMaxDistance(vehicleMaxDistance);
+            }
+            
             timeSinceLastSpawn = 0.0f;
+
+            nextVehiclePicked = false;
+        }
+
+        Debug.Log(vehicle);
+
+        if (vehicle != null)
+        {
+            distanceToLastSpawned = Vector3.Distance(vehicle.transform.position, transform.position);
+        }
+        else
+        {
+            distanceToLastSpawned = 10000.0f;
         }
 	}
 }

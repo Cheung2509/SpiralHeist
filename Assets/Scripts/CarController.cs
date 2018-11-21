@@ -21,9 +21,7 @@ public class CarController : MonoBehaviour
 	}
 	
 	void Update ()
-    {
-        float v = Vector3.Dot(rb.velocity.normalized, transform.forward);
-                          
+    {                          
         #region linear
 
         if (Input.GetKey("w"))

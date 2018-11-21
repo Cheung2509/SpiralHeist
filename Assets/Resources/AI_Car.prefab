@@ -672,3 +672,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  lifetime: 3600
+  maxDistance: 10000
+  distance: 0
+  distanceToRear: 3
+  distanceToFront: 3
