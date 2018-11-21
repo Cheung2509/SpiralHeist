@@ -61,3 +61,5 @@ MonoBehaviour:
   timeSinceLastSpawn: 0
   VehicleTypes: []
   distanceToLastSpawned: 10
+  necessaryDistanceToSpawn: 0
+  nextVehiclePicked: 0
