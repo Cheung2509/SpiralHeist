@@ -23,8 +23,7 @@ public class CarController : MonoBehaviour
 	void Update ()
     {
         float v = Vector3.Dot(rb.velocity.normalized, transform.forward);
-            
-        Debug.Log(rb.velocity.normalized);
+           
                
         #region linear
 
