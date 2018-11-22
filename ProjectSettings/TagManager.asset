@@ -8,6 +8,7 @@ TagManager:
   - Collide
   - SceneManager
   - CarTypes
+  - Spark
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - 
   - TempCast
   - Walkable
-  - 
+  - Sparks
   - 
   - 
   - 
