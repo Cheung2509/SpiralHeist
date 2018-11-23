@@ -25,6 +25,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 463750}
+  - component: {fileID: 65411743117353090}
   m_Layer: 0
   m_Name: RoadDivider
   m_TagString: Untagged
@@ -52,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 65.89157, y: 11.306438, z: -11.826139}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 440698}
@@ -112,3 +113,15 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124036}
   m_IsPrefabAsset: 1
+--- !u!65 &65411743117353090
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0492477, y: 1.613987, z: 4.017108}
+  m_Center: {x: -0.3479576, y: 0.7070961, z: 0.09532118}
