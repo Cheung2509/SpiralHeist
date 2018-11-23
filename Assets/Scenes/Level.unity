@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -113,6 +113,48 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &343721420
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4371462464656974, guid: a3485a8a219243644804a461cfe1a9da, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 208.51454
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371462464656974, guid: a3485a8a219243644804a461cfe1a9da, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.4750657
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371462464656974, guid: a3485a8a219243644804a461cfe1a9da, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 154.46059
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371462464656974, guid: a3485a8a219243644804a461cfe1a9da, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371462464656974, guid: a3485a8a219243644804a461cfe1a9da, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371462464656974, guid: a3485a8a219243644804a461cfe1a9da, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371462464656974, guid: a3485a8a219243644804a461cfe1a9da, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371462464656974, guid: a3485a8a219243644804a461cfe1a9da, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a3485a8a219243644804a461cfe1a9da, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1257598397
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,45 +221,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1001 &1327607922
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4928428705121286, guid: f1fe5cb322e0a3a489218b34a1497451, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 231.71617
-      objectReference: {fileID: 0}
-    - target: {fileID: 4928428705121286, guid: f1fe5cb322e0a3a489218b34a1497451, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 70.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4928428705121286, guid: f1fe5cb322e0a3a489218b34a1497451, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -161.76418
-      objectReference: {fileID: 0}
-    - target: {fileID: 4928428705121286, guid: f1fe5cb322e0a3a489218b34a1497451, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4928428705121286, guid: f1fe5cb322e0a3a489218b34a1497451, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4928428705121286, guid: f1fe5cb322e0a3a489218b34a1497451, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4928428705121286, guid: f1fe5cb322e0a3a489218b34a1497451, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4928428705121286, guid: f1fe5cb322e0a3a489218b34a1497451, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f1fe5cb322e0a3a489218b34a1497451, type: 2}
-  m_IsPrefabAsset: 0
