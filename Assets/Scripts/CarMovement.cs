@@ -28,9 +28,10 @@ public class CarMovement : MonoBehaviour
     }
 
     private void Accelerate()
-    {
+    { 
         rearL.motorTorque = vertical * speed;
         rearR.motorTorque = vertical * speed;
+
 
         // Car's world space velocity
         // Use to clamp speed?
@@ -62,8 +63,8 @@ public class CarMovement : MonoBehaviour
 
         if (vertical == 0)
         {
-            rearR.brakeTorque = (brakeForce * 10000);
-            rearL.brakeTorque = (brakeForce * 10000);
+            rearR.motorTorque = 0;//(brakeForce * 10000);
+            rearL.motorTorque = 0;//(brakeForce * 10000);
         }
         else
         {
