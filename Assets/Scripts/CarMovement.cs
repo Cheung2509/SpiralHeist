@@ -9,7 +9,7 @@ public class CarMovement : MonoBehaviour
     [HideInInspector]
     public Transform t_frontL, t_frontR, t_rearL, t_rearR;
 
-    public float speed, maxRotation, brakeForce, carVelocity;
+    public float speed, maxVelocity, maxRotation, brakeForce, carVelocity;
     private float horizontal, vertical, steeringAngle;
 
     private void FixedUpdate ()
@@ -28,14 +28,29 @@ public class CarMovement : MonoBehaviour
     }
 
     private void Accelerate()
-    {
+    { 
         rearL.motorTorque = vertical * speed;
         rearR.motorTorque = vertical * speed;
+
 
         // Car's world space velocity
         // Use to clamp speed?
         carVelocity = Vector3.Dot(GetComponent<Rigidbody>().velocity, transform.forward);
         carVelocity = Mathf.Abs(carVelocity);
+
+        float current_speed = Vector3.Magnitude(GetComponent<Rigidbody>().velocity);  // test current object speed
+
+        if (current_speed > maxVelocity)
+
+        {
+            float brakeSpeed = current_speed - maxVelocity;  // calculate the speed decrease
+
+            Vector3 normalisedVelocity = GetComponent<Rigidbody>().velocity.normalized;
+            Vector3 brakeVelocity = normalisedVelocity * brakeSpeed;  // make the brake Vector3 value
+
+            GetComponent<Rigidbody>().AddForce(-brakeVelocity);  // apply opposing brake force
+        }
+
     }
 
     private void Steer()

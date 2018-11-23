@@ -83,7 +83,7 @@ public class SpawnManager : MonoBehaviour
             nextVehiclePicked = false;
         }
 
-        Debug.Log(vehicle);
+        //Debug.Log(vehicle);
 
         if (vehicle != null)
         {

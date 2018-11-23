@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagerScript : MonoBehaviour
 {
+    private int target_scene;
+
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -15,8 +17,26 @@ public class SceneManagerScript : MonoBehaviour
         SceneManager.LoadScene(scene_index);
     }
 
+    public void SetTargetScene(int scene_index)
+    {
+        target_scene = scene_index;
+    }
+
+    public void ChangeToTargetSceneAfterSeconds(float seconds)
+    {
+        StartCoroutine(ChangeScene(target_scene, seconds));
+    }
+
+
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+
+    IEnumerator ChangeScene(int scene_index ,float time)
+    {
+        yield return new WaitForSeconds(time);
+        SceneManager.LoadScene(scene_index);
     }
 }
