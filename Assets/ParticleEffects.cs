@@ -41,4 +41,20 @@ public class ParticleEffects : MonoBehaviour
             }
         }
     }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        foreach (ContactPoint contact in collision.contacts)
+        {
+            if (carController.carVelocity > 0)
+            {
+                Vector3 pos = contact.point;
+                Quaternion rot = Quaternion.FromToRotation(Vector3.back, contact.normal);
+                ParticleSystem temp = Instantiate(sparks, pos, rot);
+                temp.transform.parent = transform;
+                temp.loop = false;
+                //temp.Emit(1);
+            }
+        }
+    }
 }
