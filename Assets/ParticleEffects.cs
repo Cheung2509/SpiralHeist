@@ -8,11 +8,32 @@ public class ParticleEffects : MonoBehaviour
     public CarMovement carController;
     public MeshCollider boxCollider;
 
+    [SerializeField]
+    private GameObject[] trailWheels;
+
 	// Use this for initialization
 	void Start ()
     {
         carController = GetComponent<CarMovement>();
 	}
+
+    private void Update()
+    {
+        if ((GetComponent<CarMovement>().carVelocity > 10) && (Input.GetAxis("Horizontal") != 0))
+        {
+            foreach (GameObject wheel in trailWheels)
+            {
+                wheel.GetComponent<TrailRenderer>().emitting = true;
+            }
+        }
+        else
+        {
+            foreach (GameObject wheel in trailWheels)
+            {
+                wheel.GetComponent<TrailRenderer>().emitting = false;
+            }
+        }
+    }
 
     private void LateUpdate()
     {
