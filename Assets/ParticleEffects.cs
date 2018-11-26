@@ -47,11 +47,11 @@ public class ParticleEffects : MonoBehaviour
         //}
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         foreach (ContactPoint contact in collision.contacts)
         {
-            if(carController.carVelocity > 0)
+            if (carController.carVelocity > 0)
             {
                 Vector3 pos = contact.point;
                 Quaternion rot = Quaternion.FromToRotation(Vector3.back, contact.normal);
@@ -63,11 +63,11 @@ public class ParticleEffects : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         foreach (ContactPoint contact in collision.contacts)
         {
-            if (carController.carVelocity > 0)
+            if(carController.carVelocity > 0)
             {
                 Vector3 pos = contact.point;
                 Quaternion rot = Quaternion.FromToRotation(Vector3.back, contact.normal);
