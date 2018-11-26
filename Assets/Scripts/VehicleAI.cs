@@ -47,3 +47,4 @@ public class VehicleAI : MonoBehaviour
         maxDistance = value;
     }  
 }
+

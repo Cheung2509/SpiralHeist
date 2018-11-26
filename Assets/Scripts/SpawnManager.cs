@@ -83,8 +83,6 @@ public class SpawnManager : MonoBehaviour
             nextVehiclePicked = false;
         }
 
-        Debug.Log(vehicle);
-
         if (vehicle != null)
         {
             distanceToLastSpawned = Vector3.Distance(vehicle.transform.position, transform.position);
