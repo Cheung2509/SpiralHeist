@@ -9,8 +9,17 @@ public class CarMovement : MonoBehaviour
     [HideInInspector]
     public Transform t_frontL, t_frontR, t_rearL, t_rearR;
 
+    public AudioClip hornClip;
+
     public float speed, maxVelocity, maxRotation, brakeForce, carVelocity;
     private float horizontal, vertical, steeringAngle;
+
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void FixedUpdate ()
     {
@@ -19,6 +28,7 @@ public class CarMovement : MonoBehaviour
         Accelerate();
         WheelPoses();
         Brakes();
+        Audio();
 	}
 
     private void GetInput()
@@ -32,9 +42,7 @@ public class CarMovement : MonoBehaviour
         rearL.motorTorque = vertical * speed;
         rearR.motorTorque = vertical * speed;
 
-
         // Car's world space velocity
-        // Use to clamp speed?
         carVelocity = Vector3.Dot(GetComponent<Rigidbody>().velocity, transform.forward);
         carVelocity = Mathf.Abs(carVelocity);
 
@@ -62,7 +70,6 @@ public class CarMovement : MonoBehaviour
 
     private void Brakes()
     // Slows down the car using spacebar.
-    // Needs work - not slowing down quick enough (at high speed).
     {
         if (Input.GetKey(KeyCode.Space))
         {
@@ -106,5 +113,18 @@ public class CarMovement : MonoBehaviour
 
         transform.position = pos;
         transform.rotation = quat;
+    }
+
+    private void Audio()
+    {
+        // Horn.
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            audioSource.PlayOneShot(hornClip);
+        }
+        if(Input.GetKeyUp(KeyCode.E))
+        {
+            audioSource.Stop();
+        }
     }
 }
