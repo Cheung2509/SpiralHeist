@@ -9,6 +9,8 @@ TagManager:
   - SceneManager
   - CarTypes
   - Spark
+  - AIVehicle
+  - BrakeTrigger
   layers:
   - Default
   - TransparentFX

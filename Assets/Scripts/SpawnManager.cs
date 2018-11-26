@@ -16,6 +16,7 @@ public class SpawnManager : MonoBehaviour
     private GameObject vehicle;
     private VehicleAI ai;
     private GameObject tempVehicle;
+    private bool setSpeed = false;
 
     [SerializeField]
     private float timeSinceLastSpawn = 0.0f;

@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114477693615187988}
   m_Layer: 0
   m_Name: AI_Taxi
-  m_TagString: Untagged
+  m_TagString: AIVehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -617,5 +617,7 @@ MonoBehaviour:
   lifetime: 3600
   maxDistance: 10000
   distance: 0
+  blockers: []
+  maxSpeed: 10
   distanceToRear: 3
   distanceToFront: 3

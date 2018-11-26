@@ -408,6 +408,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114692751674764008, guid: 4bac183e485c1534192364bdfe6f4300,
+        type: 2}
+      propertyPath: separation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114692751674764008, guid: 4bac183e485c1534192364bdfe6f4300,
+        type: 2}
+      propertyPath: vehicleStartSpeed
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bac183e485c1534192364bdfe6f4300, type: 2}
   m_IsPrefabAsset: 0
@@ -680,6 +690,41 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114479810706598878, guid: 7915bfcb01e22c845b4e7ad06ed67fa2,
+        type: 2}
+      propertyPath: car
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114479810706598878, guid: 7915bfcb01e22c845b4e7ad06ed67fa2,
+        type: 2}
+      propertyPath: cruiser
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114479810706598878, guid: 7915bfcb01e22c845b4e7ad06ed67fa2,
+        type: 2}
+      propertyPath: taxi
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114479810706598878, guid: 7915bfcb01e22c845b4e7ad06ed67fa2,
+        type: 2}
+      propertyPath: van
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114479810706598878, guid: 7915bfcb01e22c845b4e7ad06ed67fa2,
+        type: 2}
+      propertyPath: wagon
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114479810706598878, guid: 7915bfcb01e22c845b4e7ad06ed67fa2,
+        type: 2}
+      propertyPath: bus
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114479810706598878, guid: 7915bfcb01e22c845b4e7ad06ed67fa2,
+        type: 2}
+      propertyPath: rig
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7915bfcb01e22c845b4e7ad06ed67fa2, type: 2}
   m_IsPrefabAsset: 0
@@ -692,7 +737,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4051263191825190, guid: 5d5e42784ff4f2a4b846fdd8a906eb95, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 6.45
+      value: 1.08
       objectReference: {fileID: 0}
     - target: {fileID: 4051263191825190, guid: 5d5e42784ff4f2a4b846fdd8a906eb95, type: 2}
       propertyPath: m_LocalPosition.y
@@ -700,7 +745,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4051263191825190, guid: 5d5e42784ff4f2a4b846fdd8a906eb95, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -1.48
+      value: 12.66
       objectReference: {fileID: 0}
     - target: {fileID: 4051263191825190, guid: 5d5e42784ff4f2a4b846fdd8a906eb95, type: 2}
       propertyPath: m_LocalRotation.x
@@ -875,6 +920,10 @@ Prefab:
         type: 2}
       propertyPath: m_Drag
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202346238089898, guid: 5d5e42784ff4f2a4b846fdd8a906eb95, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d5e42784ff4f2a4b846fdd8a906eb95, type: 2}
