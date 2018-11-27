@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CarMovement : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class CarMovement : MonoBehaviour
     public WheelCollider frontL, frontR, rearL, rearR;
     [HideInInspector]
     public Transform t_frontL, t_frontR, t_rearL, t_rearR;
+
+    [SerializeField]
+    private GameObject Speedo;
 
     public float speed, maxVelocity, maxRotation, brakeForce, carVelocity;
     private float horizontal, vertical, steeringAngle;
@@ -19,6 +23,8 @@ public class CarMovement : MonoBehaviour
         Accelerate();
         WheelPoses();
         Brakes();
+
+        Speedo.GetComponent<Text>().text = (Mathf.RoundToInt(carVelocity)).ToString();
 	}
 
     private void GetInput()
@@ -36,7 +42,7 @@ public class CarMovement : MonoBehaviour
         // Car's world space velocity
         // Use to clamp speed?
         carVelocity = Vector3.Dot(GetComponent<Rigidbody>().velocity, transform.forward);
-        carVelocity = Mathf.Abs(carVelocity);
+        carVelocity = Mathf.Abs(carVelocity) * 2;
 
         float current_speed = Vector3.Magnitude(GetComponent<Rigidbody>().velocity);  // test current object speed
 
