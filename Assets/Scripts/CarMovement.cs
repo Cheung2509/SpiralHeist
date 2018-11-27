@@ -10,7 +10,7 @@ public class CarMovement : MonoBehaviour
     [HideInInspector]
     public Transform t_frontL, t_frontR, t_rearL, t_rearR;
     //[HideInInspector]
-    public AudioClip hornClip, idleClip, accelerationClip, decelerationClip;
+    public AudioClip hornClip, idleClip, accelerationClip;
 
     [SerializeField]
     private GameObject Speedo;
@@ -23,7 +23,6 @@ public class CarMovement : MonoBehaviour
     private void Awake()
     {
        audioSource = GetComponent<AudioSource>();
-
     }
 
     private void FixedUpdate()
@@ -33,6 +32,7 @@ public class CarMovement : MonoBehaviour
         Accelerate();
         WheelPoses();
         Brakes();
+        Audio();
 
         Speedo.GetComponent<Text>().text = (Mathf.RoundToInt(carVelocity)).ToString();
 	}
