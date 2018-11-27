@@ -18,6 +18,9 @@ public class WindowScript : MonoBehaviour
                 child.GetComponent<Rigidbody>().isKinematic = false;
                 child.GetComponent<Rigidbody>().AddExplosionForce(100,other.transform.position, 10);
             }
+
+            
+            GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>().WindowSmashed();
         }
     }
 }

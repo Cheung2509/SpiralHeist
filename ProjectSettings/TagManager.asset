@@ -11,6 +11,8 @@ TagManager:
   - Spark
   - AIVehicle
   - BrakeTrigger
+  - ScoreManager
+  - LeaderboardCanvas
   layers:
   - Default
   - TransparentFX
