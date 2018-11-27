@@ -34,15 +34,17 @@ public class CarMovement : MonoBehaviour
     }
 
     private void Accelerate()
-    { 
-        rearL.motorTorque = vertical * speed;
-        rearR.motorTorque = vertical * speed;
+    {
+        if (Input.GetKey(KeyCode.W))
+        {
+            frontL.motorTorque = vertical * speed;
+            frontR.motorTorque = vertical * speed;
+        }
 
-
-        // Car's world space velocity
-        // Use to clamp speed?
-        carVelocity = Vector3.Dot(GetComponent<Rigidbody>().velocity, transform.forward);
-        carVelocity = Mathf.Abs(carVelocity) * 2;
+            // Car's world space velocity
+            // Use to clamp speed?
+            carVelocity = Vector3.Dot(GetComponent<Rigidbody>().velocity, transform.forward);
+        carVelocity = Mathf.Abs(carVelocity) * 1.5f;
 
         float current_speed = Vector3.Magnitude(GetComponent<Rigidbody>().velocity);  // test current object speed
 

@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> Figures;
 
-    private int total_score;
+    private PlayerInfo playerInfo;
 
     private void Start()
     {
@@ -18,9 +18,9 @@ public class ScoreManager : MonoBehaviour
 
     void addScore(int score)
     {
-        total_score += score;
+        playerInfo.score += score;
 
-        string temp = total_score.ToString();
+        string temp = playerInfo.score.ToString();
         while(temp.Length < 5)
         {
             temp = "0" + temp;
