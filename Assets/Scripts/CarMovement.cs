@@ -5,27 +5,48 @@ using UnityEngine.UI;
 
 public class CarMovement : MonoBehaviour
 {
+    // Wheel collider 
     [HideInInspector]
     public WheelCollider frontL, frontR, rearL, rearR;
     [HideInInspector]
     public Transform t_frontL, t_frontR, t_rearL, t_rearR;
-
     [SerializeField]
     private GameObject Speedo;
-
-    public float speed, maxVelocity, maxRotation, brakeForce, carVelocity;
+    [SerializeField]
+    private float speed, maxVelocity, maxRotation, brakeForce;
     private float horizontal, vertical, steeringAngle;
+    public float carVelocity;
 
-    private void FixedUpdate ()
+    // Audio 
+    [HideInInspector]
+    public AudioClip hornClip, idleClip, accelerationClip;
+    private AudioSource audioSource;
+
+    // Cam
+    public Camera cam;
+
+
+    private void Awake()
+    {
+       audioSource = GetComponent<AudioSource>();
+    }
+
+    private void FixedUpdate()
     {
         GetInput();
         Steer();
         Accelerate();
         WheelPoses();
         Brakes();
+        Audio();
 
         Speedo.GetComponent<Text>().text = (Mathf.RoundToInt(carVelocity)).ToString();
 	}
+
+    private void LateUpdate()
+    {
+        ReverseCam();
+    }
 
     private void GetInput()
     {
@@ -35,15 +56,14 @@ public class CarMovement : MonoBehaviour
 
     private void Accelerate()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (carVelocity <= 50.0f) // THIS DOES NOT CLAMP THE CAR'S SPEED
         {
             frontL.motorTorque = vertical * speed;
             frontR.motorTorque = vertical * speed;
         }
 
-            // Car's world space velocity
-            // Use to clamp speed?
-            carVelocity = Vector3.Dot(GetComponent<Rigidbody>().velocity, transform.forward);
+        // Car's world space velocity
+        carVelocity = Vector3.Dot(GetComponent<Rigidbody>().velocity, transform.forward);
         carVelocity = Mathf.Abs(carVelocity) * 1.5f;
 
         float current_speed = Vector3.Magnitude(GetComponent<Rigidbody>().velocity);  // test current object speed
@@ -58,7 +78,6 @@ public class CarMovement : MonoBehaviour
 
             GetComponent<Rigidbody>().AddForce(-brakeVelocity);  // apply opposing brake force
         }
-
     }
 
     private void Steer()
@@ -70,7 +89,6 @@ public class CarMovement : MonoBehaviour
 
     private void Brakes()
     // Slows down the car using spacebar.
-    // Needs work - not slowing down quick enough (at high speed).
     {
         if (Input.GetKey(KeyCode.Space))
         {
@@ -114,5 +132,52 @@ public class CarMovement : MonoBehaviour
 
         transform.position = pos;
         transform.rotation = quat;
+    }
+
+    private void ReverseCam()
+    {
+        if (Input.GetKey(KeyCode.S))
+        {
+            cam.GetComponent<CameraController>().offset.z = 5.0f;
+        }
+        else
+            cam.GetComponent<CameraController>().offset.z = -5.0f;
+    }
+
+    private void Audio()
+    {  
+        // Horn.
+        if (Input.GetButton("Horn"))
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = hornClip;
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            if (audioSource.clip == hornClip && audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
+        }
+
+        // Acceleration.
+        if (Input.GetKey(KeyCode.W))
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = accelerationClip;
+                audioSource.Play();
+            }
+        }
+        else if(!Input.GetKey(KeyCode.W))
+        {
+            if (audioSource.clip == accelerationClip && audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
+        }
     }
 }

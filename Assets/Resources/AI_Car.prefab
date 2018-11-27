@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4393142319781790}
   - component: {fileID: 65946803813975380}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WDR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4029270919417338}
   - component: {fileID: 33366832225857392}
   - component: {fileID: 23043498633712954}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WC2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,9 +55,26 @@ GameObject:
   - component: {fileID: 54419139564808972}
   - component: {fileID: 65677562374302880}
   - component: {fileID: 114836140344883968}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: AI_Car
   m_TagString: AIVehicle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1276123230030458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4637974189708626}
+  - component: {fileID: 65201315919869416}
+  - component: {fileID: 114380731450725166}
+  m_Layer: 11
+  m_Name: BrakeTrigger
+  m_TagString: BrakeTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +87,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4680142460319438}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Car2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4274036640883194}
   - component: {fileID: 65687865058112508}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WDF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4639641235715356}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Rotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4250339404947018}
   - component: {fileID: 65938410280676466}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WDR (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +151,7 @@ GameObject:
   - component: {fileID: 4051656713548260}
   - component: {fileID: 33845735987465566}
   - component: {fileID: 23523529173956430}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Car2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +168,7 @@ GameObject:
   - component: {fileID: 4608054989392846}
   - component: {fileID: 33899969730588626}
   - component: {fileID: 23814278062299382}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WC2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +185,7 @@ GameObject:
   - component: {fileID: 4850661807595576}
   - component: {fileID: 33464905099422814}
   - component: {fileID: 23089386926546120}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WC2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4076561822977900}
   - component: {fileID: 65509503810667908}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WDF (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +218,7 @@ GameObject:
   - component: {fileID: 4106406368203616}
   - component: {fileID: 33468509058913388}
   - component: {fileID: 23138402862633706}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WC2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,6 +337,19 @@ Transform:
   m_Father: {fileID: 4274036640883194}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4637974189708626
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1276123230030458}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.07, z: -0.06}
+  m_LocalScale: {x: 1, y: 0.79587, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4741528299639822}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4639641235715356
 Transform:
   m_ObjectHideFlags: 1
@@ -354,11 +384,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1221378437850024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.9, z: 0}
+  m_LocalPosition: {x: 0, y: 1.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4680142460319438}
   - {fileID: 4639641235715356}
+  - {fileID: 4637974189708626}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -592,7 +623,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1221378437850024}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 5000
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
@@ -600,6 +631,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65201315919869416
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1276123230030458}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.95, y: 1.8, z: 5}
+  m_Center: {x: 0, y: 0, z: 5.3}
 --- !u!65 &65509503810667908
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -660,6 +703,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114380731450725166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1276123230030458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 934238df0c1122e42a104d2d4d17fafd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114836140344883968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -671,11 +725,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6094cf6c19b0f5b49b8f4d42f4a641e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  maxSpeed: 0
+  currentSpeed: 0
   lifetime: 3600
   maxDistance: 10000
   distance: 0
   blockers: []
-  maxSpeed: 10
   distanceToRear: 3
   distanceToFront: 3
