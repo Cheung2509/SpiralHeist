@@ -825,15 +825,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4051263191825190, guid: 5d5e42784ff4f2a4b846fdd8a906eb95, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 586.45
+      value: 429.11
       objectReference: {fileID: 0}
     - target: {fileID: 4051263191825190, guid: 5d5e42784ff4f2a4b846fdd8a906eb95, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 12.1
       objectReference: {fileID: 0}
     - target: {fileID: 4051263191825190, guid: 5d5e42784ff4f2a4b846fdd8a906eb95, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -11.67
+      value: 315.9
       objectReference: {fileID: 0}
     - target: {fileID: 4051263191825190, guid: 5d5e42784ff4f2a4b846fdd8a906eb95, type: 2}
       propertyPath: m_LocalRotation.x
@@ -841,7 +841,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4051263191825190, guid: 5d5e42784ff4f2a4b846fdd8a906eb95, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.8453634
+      value: 0.99855727
       objectReference: {fileID: 0}
     - target: {fileID: 4051263191825190, guid: 5d5e42784ff4f2a4b846fdd8a906eb95, type: 2}
       propertyPath: m_LocalRotation.z
@@ -849,25 +849,21 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4051263191825190, guid: 5d5e42784ff4f2a4b846fdd8a906eb95, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.5341917
+      value: -0.05369843
       objectReference: {fileID: 0}
     - target: {fileID: 4051263191825190, guid: 5d5e42784ff4f2a4b846fdd8a906eb95, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4051263191825190, guid: 5d5e42784ff4f2a4b846fdd8a906eb95, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 244.578
-      objectReference: {fileID: 0}
-    - target: {fileID: 1202346238089898, guid: 5d5e42784ff4f2a4b846fdd8a906eb95, type: 2}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 114770532118220388, guid: 5d5e42784ff4f2a4b846fdd8a906eb95,
         type: 2}
       propertyPath: Speedo
       value: 
       objectReference: {fileID: 766892558}
+    - target: {fileID: 4051263191825190, guid: 5d5e42784ff4f2a4b846fdd8a906eb95, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 186.15599
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d5e42784ff4f2a4b846fdd8a906eb95, type: 2}
   m_IsPrefabAsset: 0
