@@ -13,12 +13,12 @@ public class Leaderboard : MonoBehaviour
         save = new _GameSaveLoad();
         playerInfos = new List<PlayerInfo>();
 
-        PlayerInfo info = new PlayerInfo("MAT", 10, 5.0f);
-        AddPlayer(info);
-        Save();
+        //PlayerInfo info = new PlayerInfo("AAA", 0, 0, 0);
+        //AddPlayer(info);
+        //Save();
     }
 
-    void AddPlayer(PlayerInfo player)
+    public void AddPlayer(PlayerInfo player)
     {
         playerInfos.Add(player);
         RankData();

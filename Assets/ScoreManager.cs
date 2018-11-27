@@ -10,6 +10,10 @@ public class ScoreManager : MonoBehaviour
 
     private PlayerInfo playerInfo;
 
+    private int windows_smashed = 0;
+
+    private float time_taken;
+
     private void Start()
     {
 
@@ -34,8 +38,23 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    void WindowSmashed()
+    {
+        playerInfo.windowsSmashed++;
+    }
+
     private void Update()
     {
         addScore(15);
+    }
+
+    public void GameOver()
+    {
+        playerInfo.timePlayed = time_taken;
+
+        Leaderboard leaderboard = new Leaderboard();
+        leaderboard.Load();
+        leaderboard.AddPlayer(playerInfo);
+        leaderboard.Save();
     }
 }

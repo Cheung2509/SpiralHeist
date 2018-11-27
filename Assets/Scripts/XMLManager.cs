@@ -97,13 +97,15 @@ public class _GameSaveLoad
 public struct PlayerInfo
 {
     public string name;
-    public int score;
+    public float score;
     public float timePlayed;
+    public int windowsSmashed;
 
-    public PlayerInfo(string name, int score, float timePlayed)
+    public PlayerInfo(string name, float score, float timePlayed, int windowsSmashed)
     {
         this.name = name;
         this.score = score;
         this.timePlayed = timePlayed;
+        this.windowsSmashed = windowsSmashed;
     }
 }
