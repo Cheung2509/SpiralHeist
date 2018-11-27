@@ -35,7 +35,7 @@ public class CarMovement : MonoBehaviour
 
     private void Accelerate()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (carVelocity <= 50.0f)
         {
             frontL.motorTorque = vertical * speed;
             frontR.motorTorque = vertical * speed;
