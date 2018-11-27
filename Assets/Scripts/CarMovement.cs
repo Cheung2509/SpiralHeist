@@ -25,7 +25,6 @@ public class CarMovement : MonoBehaviour
     // Cam
     public Camera cam;
 
-
     private void Awake()
     {
        audioSource = GetComponent<AudioSource>();
@@ -41,7 +40,13 @@ public class CarMovement : MonoBehaviour
         Audio();
 
         Speedo.GetComponent<Text>().text = (Mathf.RoundToInt(carVelocity)).ToString();
-	}
+
+        // Press U to rotate car.
+        if (Input.GetKey(KeyCode.U))
+        {
+            transform.Rotate(Vector3.back * Time.deltaTime * 1000);
+        }
+    }
 
     private void LateUpdate()
     {
@@ -180,4 +185,5 @@ public class CarMovement : MonoBehaviour
             }
         }
     }
+
 }
