@@ -34,10 +34,12 @@ public class CarMovement : MonoBehaviour
     }
 
     private void Accelerate()
-    { 
-        rearL.motorTorque = vertical * speed;
-        rearR.motorTorque = vertical * speed;
-
+    {
+        if (carVelocity <= 50)
+        { 
+            rearL.motorTorque = vertical * speed;
+            rearR.motorTorque = vertical * speed;
+        }
 
         // Car's world space velocity
         // Use to clamp speed?
