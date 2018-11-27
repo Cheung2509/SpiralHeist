@@ -9,9 +9,14 @@ public class WindowScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            Debug.Log("Smash");
+
             foreach (Transform child in transform)
             {
+                Debug.Log(child.gameObject.name);
+
                 child.GetComponent<Rigidbody>().isKinematic = false;
+                child.GetComponent<Rigidbody>().AddExplosionForce(100,other.transform.position, 10);
             }
         }
     }
