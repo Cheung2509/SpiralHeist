@@ -7,13 +7,13 @@ public class ParticleEffects : MonoBehaviour
     public ParticleSystem sparks;
     public CarMovement carController;
     public MeshCollider boxCollider;
-
     [SerializeField]
     private GameObject[] trailWheels;
 
 	// Use this for initialization
 	void Start ()
     {
+
         carController = GetComponent<CarMovement>();
 	}
 
@@ -33,18 +33,6 @@ public class ParticleEffects : MonoBehaviour
                 wheel.GetComponent<TrailRenderer>().emitting = false;
             }
         }
-    }
-
-    private void LateUpdate()
-    {
-        //GameObject[] allParticles = GameObject.FindGameObjectsWithTag("Spark");
-
-        //foreach (GameObject obj in allParticles)
-        //{
-        //    ParticleSystem ps = obj.GetComponent<ParticleSystem>();
-        //    if (!ps.IsAlive()|| obj == null)
-        //        Destroy(obj);
-        //}
     }
 
     private void OnCollisionStay(Collision collision)
