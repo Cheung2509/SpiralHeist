@@ -8,8 +8,8 @@ public class CarMovement : MonoBehaviour
     public WheelCollider frontL, frontR, rearL, rearR;
     [HideInInspector]
     public Transform t_frontL, t_frontR, t_rearL, t_rearR;
-
-    public AudioClip hornClip;
+    //[HideInInspector]
+    public AudioClip hornClip, idleClip, accelerationClip, decelerationClip;
 
     public float speed, maxVelocity, maxRotation, brakeForce, carVelocity;
     private float horizontal, vertical, steeringAngle;
@@ -18,10 +18,11 @@ public class CarMovement : MonoBehaviour
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+       audioSource = GetComponent<AudioSource>();
+
     }
 
-    private void FixedUpdate ()
+    private void FixedUpdate()
     {
         GetInput();
         Steer();
@@ -29,7 +30,7 @@ public class CarMovement : MonoBehaviour
         WheelPoses();
         Brakes();
         Audio();
-	}
+    }
 
     private void GetInput()
     {
@@ -38,13 +39,13 @@ public class CarMovement : MonoBehaviour
     }
 
     private void Accelerate()
-    { 
+    {
         rearL.motorTorque = vertical * speed;
         rearR.motorTorque = vertical * speed;
 
         // Car's world space velocity
         carVelocity = Vector3.Dot(GetComponent<Rigidbody>().velocity, transform.forward);
-        carVelocity = Mathf.Abs(carVelocity);
+        //carVelocity = Mathf.Abs(carVelocity);
 
         float current_speed = Vector3.Magnitude(GetComponent<Rigidbody>().velocity);  // test current object speed
 
@@ -116,15 +117,40 @@ public class CarMovement : MonoBehaviour
     }
 
     private void Audio()
-    {
+    {  
         // Horn.
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetButton("Horn"))
         {
-            audioSource.PlayOneShot(hornClip);
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = hornClip;
+                audioSource.Play();
+            }
         }
-        if(Input.GetKeyUp(KeyCode.E))
+        else
         {
-            audioSource.Stop();
+            if (audioSource.clip == hornClip && audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
+        }
+
+        // Acceleration.
+        if (Input.GetKey(KeyCode.W))
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = accelerationClip;
+                audioSource.Play();
+            }
+        }
+        else if(!Input.GetKey(KeyCode.W))
+        {
+            if (audioSource.clip == accelerationClip && audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
         }
     }
+
 }
