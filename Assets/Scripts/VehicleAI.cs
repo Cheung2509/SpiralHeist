@@ -5,7 +5,9 @@ using UnityEngine;
 public class VehicleAI : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 0.0f;
+    private float maxSpeed = 0.0f;
+    [SerializeField]
+    private float currentSpeed = 0.0f;
     [SerializeField]
     private float lifetime = 3600.0f;
     [SerializeField]
@@ -14,20 +16,13 @@ public class VehicleAI : MonoBehaviour
     private float distance = 0.0f;
     [SerializeField]
     private List<GameObject> blockers;
-
-    public float maxSpeed = 0.0f;
-    
+        
     public float distanceToRear = 0.0f;
     public float distanceToFront = 0.0f;
 
-    private void Start()
-    {
-        
-    }
-
     void Update()
     {
-        transform.position += (Time.deltaTime * transform.forward * speed);
+        transform.position += (Time.deltaTime * transform.forward * currentSpeed);
 
         distance = Vector3.Distance(transform.position, transform.parent.position);
 
@@ -44,17 +39,17 @@ public class VehicleAI : MonoBehaviour
         {
             foreach (GameObject blocker in blockers)
             {
-                if (speed > 0.0f)
+                if (currentSpeed > 0.0f)
                 {
-                    speed -= speed * 0.05f; ;
+                    currentSpeed -= currentSpeed * 0.05f; ;
                 }
             }
         }
         else
         {
-            if (speed < maxSpeed)
+            if (currentSpeed < maxSpeed)
             {
-                speed += (maxSpeed - speed) * 0.01f;
+                currentSpeed += (maxSpeed - currentSpeed) * 0.01f;
             }
         }
     }
