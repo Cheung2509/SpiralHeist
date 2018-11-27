@@ -215,7 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 986880551}
   offset: {x: 0, y: 2.5, z: -5}
-  followSpeed: 10
+  followSpeed: 5
   lookSpeed: 10
 --- !u!1001 &620367995
 Prefab:
@@ -1104,6 +1104,11 @@ Prefab:
       propertyPath: accelerationClip
       value: 
       objectReference: {fileID: 8300000, guid: 21fedba81dfab0a4da860d960074ef71, type: 3}
+    - target: {fileID: 114770532118220388, guid: 5d5e42784ff4f2a4b846fdd8a906eb95,
+        type: 2}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 467439758}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d5e42784ff4f2a4b846fdd8a906eb95, type: 2}
   m_IsPrefabAsset: 0
