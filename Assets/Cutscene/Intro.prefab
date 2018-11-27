@@ -51,6 +51,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4233097879724432}
   - component: {fileID: 114093744952602640}
+  - component: {fileID: 95389692612526150}
   m_Layer: 0
   m_Name: Camera Settings
   m_TagString: Untagged
@@ -98,7 +99,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1405446204814564}
-  m_LocalRotation: {x: -0.008536772, y: 0.9677451, z: -0.24960166, w: -0.03309841}
+  m_LocalRotation: {x: -0.025460327, y: 0.95331895, z: -0.28892478, w: -0.084007375}
   m_LocalPosition: {x: 433.76102, y: 25.34645, z: 337.83307}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -161,6 +162,24 @@ Transform:
   m_Father: {fileID: 4793962267474084}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &95389692612526150
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1405446204814564}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114030837078448210
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -245,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 114887213435475094}
-  m_PathPosition: 0
+  m_PathPosition: 0.1
   m_PositionUnits: 0
   m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 0
@@ -286,7 +305,7 @@ MonoBehaviour:
     roll: 0
   - position: {x: 0.23592624, y: 25.741598, z: 45.45754}
     roll: 0
-  - position: {x: 2.8998835, y: 32.912643, z: 76.18352}
+  - position: {x: 3.85652, y: 12.619965, z: 72.583405}
     roll: 0
 --- !u!320 &320516993329939030
 PlayableDirector:
@@ -312,5 +331,14 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 114743580116421756, guid: fceeb7384ce6bb9478da10ae176271c3, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 114042490035447400, guid: fceeb7384ce6bb9478da10ae176271c3, type: 2}
+    value: {fileID: 95389692612526150}
+  - key: {fileID: 114991754206427028, guid: fceeb7384ce6bb9478da10ae176271c3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 114942732002956264, guid: fceeb7384ce6bb9478da10ae176271c3, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
-    m_References: []
+    m_References:
+    - 971f36e44308ecd46b4c3fb473a1ce78: {fileID: 0}
