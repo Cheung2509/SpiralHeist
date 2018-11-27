@@ -11,7 +11,7 @@ public class VehicleAI : MonoBehaviour
     [SerializeField]
     private float lifetime = 3600.0f;
     [SerializeField]
-    private float maxDistance = 10000.0f;
+    private float maxDistance = 0.0f;
     [SerializeField]
     private float distance = 0.0f;
     [SerializeField]
@@ -79,4 +79,3 @@ public class VehicleAI : MonoBehaviour
         blockers.Remove(vehicle);
     }
 }
-
