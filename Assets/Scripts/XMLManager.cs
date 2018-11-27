@@ -97,13 +97,15 @@ public struct PlayerInfo
 {
     public string name;
     public float score;
+    public float totalScore;
     public float timeRemaining;
     public int windowsSmashed;
 
-    public PlayerInfo(string name, float score, float timeRemaining, int windowsSmashed)
+    public PlayerInfo(string name, float score, float totalScore, float timeRemaining, int windowsSmashed)
     {
         this.name = name;
         this.score = score;
+        this.totalScore = totalScore;
         this.timeRemaining = timeRemaining;
         this.windowsSmashed = windowsSmashed;
     }

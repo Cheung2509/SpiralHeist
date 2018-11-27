@@ -25,19 +25,21 @@ public class GetScores : MonoBehaviour
     private float finalScore;
 
     // Use this for initialization
-    void Start ()
+    void Awake ()
 	{
 	    scoreManager = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
 
 	    score = scoreManager.playerInfo.score;
 	    timeScore = scoreManager.playerInfo.timeRemaining * 10;
-	    windowsSmashed = scoreManager.playerInfo.score;
+	    windowsSmashed = scoreManager.playerInfo.windowsSmashed;
 
 	    finalScore = (score + timeScore) * windowsSmashed;
 
 	    ScoreNum.GetComponent<Text>().text = Mathf.RoundToInt(score).ToString();
-	    TimeScoreNum.GetComponent<Text>().text = Mathf.RoundToInt(timeScore).ToString();
-	    WindowsMultiplierNum.GetComponent<Text>().text = Mathf.RoundToInt(windowsSmashed).ToString();
-	    TotalScoreNum.GetComponent<Text>().text = Mathf.RoundToInt(finalScore).ToString();
+	    TimeScoreNum.GetComponent<NumberCountEffect>().targetNumber = Mathf.RoundToInt(timeScore);
+	    WindowsMultiplierNum.GetComponent<NumberCountEffect>().targetNumber = Mathf.RoundToInt(windowsSmashed);
+        TotalScoreNum.GetComponent<NumberCountEffect>().targetNumber = Mathf.RoundToInt(finalScore);
+
+        scoreManager.playerInfo.totalScore = finalScore;
     }
 }

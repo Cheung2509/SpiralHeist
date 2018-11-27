@@ -11,7 +11,7 @@ public class Leaderboard : MonoBehaviour
 
     private GameObject ScoreManager;
 
-    private GameObject LeaderboardCanvas;
+    public GameObject LeaderboardCanvas;
 
     [SerializeField]
     private List<GameObject> LeaderBoardNames;
@@ -23,6 +23,7 @@ public class Leaderboard : MonoBehaviour
     {
         save = new _GameSaveLoad();
         playerInfos = new List<PlayerInfo>();
+        ScoreManager = GameObject.FindGameObjectWithTag("ScoreManager");
 
         Load();
     }
@@ -35,10 +36,10 @@ public class Leaderboard : MonoBehaviour
         Save();
 
         //set up leaderboard
-        for (int i = 0; i < playerInfos.Count; i++)
+        for (int i = 0; i < 7; i++)
         {
             LeaderBoardNames[i].GetComponent<Text>().text = playerInfos[i].name;
-            LeaderBoardScores[i].GetComponent<Text>().text = Mathf.RoundToInt(playerInfos[i].score).ToString();
+            LeaderBoardScores[i].GetComponent<Text>().text = Mathf.RoundToInt(playerInfos[i].totalScore).ToString();
         }
 
         LeaderboardCanvas.GetComponent<MoveUI>().Move(true);
@@ -59,7 +60,7 @@ public class Leaderboard : MonoBehaviour
 
     private void RankData()
     {
-        Comparison<PlayerInfo> comparer = (PlayerInfo a, PlayerInfo b) => b.score.CompareTo(a.score);
+        Comparison<PlayerInfo> comparer = (PlayerInfo a, PlayerInfo b) => b.totalScore.CompareTo(a.totalScore);
         playerInfos.Sort(comparer);
     }
 

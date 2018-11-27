@@ -20,7 +20,7 @@ public class HighscoreChecking : MonoBehaviour
 
         leaderboard = LeaderboardGO.GetComponent<Leaderboard>();
 
-        if (scoreManager.playerInfo.score > leaderboard.playerInfos[(leaderboard.playerInfos.Count - 1)].score)
+        if (scoreManager.playerInfo.totalScore > leaderboard.playerInfos[(leaderboard.playerInfos.Count - 1)].totalScore)
         {
             HighscoreInterface.SetActive(true);
         }
