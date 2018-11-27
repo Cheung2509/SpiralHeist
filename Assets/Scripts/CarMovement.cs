@@ -9,6 +9,8 @@ public class CarMovement : MonoBehaviour
     public WheelCollider frontL, frontR, rearL, rearR;
     [HideInInspector]
     public Transform t_frontL, t_frontR, t_rearL, t_rearR;
+    //[HideInInspector]
+    public AudioClip hornClip, idleClip, accelerationClip, decelerationClip;
 
     [SerializeField]
     private GameObject Speedo;
@@ -16,7 +18,15 @@ public class CarMovement : MonoBehaviour
     public float speed, maxVelocity, maxRotation, brakeForce, carVelocity;
     private float horizontal, vertical, steeringAngle;
 
-    private void FixedUpdate ()
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+       audioSource = GetComponent<AudioSource>();
+
+    }
+
+    private void FixedUpdate()
     {
         GetInput();
         Steer();
@@ -70,7 +80,6 @@ public class CarMovement : MonoBehaviour
 
     private void Brakes()
     // Slows down the car using spacebar.
-    // Needs work - not slowing down quick enough (at high speed).
     {
         if (Input.GetKey(KeyCode.Space))
         {
@@ -115,4 +124,42 @@ public class CarMovement : MonoBehaviour
         transform.position = pos;
         transform.rotation = quat;
     }
+
+    private void Audio()
+    {  
+        // Horn.
+        if (Input.GetButton("Horn"))
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = hornClip;
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            if (audioSource.clip == hornClip && audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
+        }
+
+        // Acceleration.
+        if (Input.GetKey(KeyCode.W))
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = accelerationClip;
+                audioSource.Play();
+            }
+        }
+        else if(!Input.GetKey(KeyCode.W))
+        {
+            if (audioSource.clip == accelerationClip && audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
+        }
+    }
+
 }
