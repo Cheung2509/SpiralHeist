@@ -99,7 +99,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1405446204814564}
-  m_LocalRotation: {x: -0.025460327, y: 0.95331895, z: -0.28892478, w: -0.084007375}
+  m_LocalRotation: {x: -0.055165067, y: 0.9387472, z: -0.2892254, w: -0.17905086}
   m_LocalPosition: {x: 433.76102, y: 25.34645, z: 337.83307}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -297,7 +297,7 @@ MonoBehaviour:
     width: 0.2
   m_Looped: 0
   m_Waypoints:
-  - position: {x: 1, y: 0, z: 0}
+  - position: {x: -4.838073, y: 1.7349211, z: -3.671409}
     roll: 0
   - position: {x: -1.2522374, y: 7.9961042, z: 10.134709}
     roll: 0
