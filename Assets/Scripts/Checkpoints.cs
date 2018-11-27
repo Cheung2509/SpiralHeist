@@ -27,6 +27,7 @@ public class Checkpoints : MonoBehaviour
                 // Game over position checkpoint.
                 case 3:
                     GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManagerScript>().ChangeScene(3);
+                    GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>().GameOver();
                     break;
             }
         }

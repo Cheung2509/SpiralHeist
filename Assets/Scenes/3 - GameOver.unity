@@ -832,6 +832,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16497041baa2b7409d9fc74036b7731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScoreNum: {fileID: 1762402147}
+  TimeScoreNum: {fileID: 400092503}
+  WindowsMultiplierNum: {fileID: 807308652}
+  TotalScoreNum: {fileID: 1590348485}
 --- !u!1 &307858709
 GameObject:
   m_ObjectHideFlags: 0

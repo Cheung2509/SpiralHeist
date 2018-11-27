@@ -17,19 +17,27 @@ public class GetScores : MonoBehaviour
     private GameObject WindowsMultiplierNum;
 
     [SerializeField]
-    private GameObject TotalScoreNum; 
+    private GameObject TotalScoreNum;
+
+    private float score;
+    private float timeScore;
+    private float windowsSmashed;
+    private float finalScore;
 
     // Use this for initialization
     void Start ()
 	{
 	    scoreManager = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
 
-	    ScoreNum.GetComponent<Text>().text = Mathf.RoundToInt(scoreManager.playerInfo.score).ToString();
-	    TimeScoreNum.GetComponent<Text>().text = Mathf.RoundToInt(scoreManager.playerInfo.timePlayed).ToString();
-	    WindowsMultiplierNum.GetComponent<Text>().text = scoreManager.playerInfo.windowsSmashed.ToString();
-	    TotalScoreNum.GetComponent<Text>().text =
-	        Mathf.RoundToInt((scoreManager.playerInfo.score + scoreManager.playerInfo.timePlayed) *
-	         scoreManager.playerInfo.windowsSmashed).ToString();
+	    score = scoreManager.playerInfo.score;
+	    timeScore = scoreManager.playerInfo.timeRemaining * 10;
+	    windowsSmashed = scoreManager.playerInfo.score;
 
-	}
+	    finalScore = (score + timeScore) * windowsSmashed;
+
+	    ScoreNum.GetComponent<Text>().text = Mathf.RoundToInt(score).ToString();
+	    TimeScoreNum.GetComponent<Text>().text = Mathf.RoundToInt(timeScore).ToString();
+	    WindowsMultiplierNum.GetComponent<Text>().text = Mathf.RoundToInt(windowsSmashed).ToString();
+	    TotalScoreNum.GetComponent<Text>().text = Mathf.RoundToInt(finalScore).ToString();
+    }
 }

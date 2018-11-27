@@ -12,7 +12,8 @@ public class ScoreManager : MonoBehaviour
 
     private int windows_smashed = 0;
 
-    private float time_taken;
+    [SerializeField]
+    private GameObject timer;
 
     private void Start()
     {
@@ -20,7 +21,7 @@ public class ScoreManager : MonoBehaviour
     }
 
 
-    void addScore(int score)
+    public void addScore(int score)
     {
         playerInfo.score += score;
 
@@ -38,18 +39,18 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    void WindowSmashed()
+    public void WindowSmashed()
     {
         playerInfo.windowsSmashed++;
     }
 
     private void Update()
     {
-        addScore(15);
+        //addScore(15);
     }
 
-    private void GameOver()
+    public void GameOver()
     {
-        playerInfo.timePlayed = time_taken;
+        playerInfo.timeRemaining = timer.GetComponent<Timer>().time_remaining;
     }
 }

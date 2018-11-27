@@ -97,14 +97,14 @@ public struct PlayerInfo
 {
     public string name;
     public float score;
-    public float timePlayed;
+    public float timeRemaining;
     public int windowsSmashed;
 
-    public PlayerInfo(string name, float score, float timePlayed, int windowsSmashed)
+    public PlayerInfo(string name, float score, float timeRemaining, int windowsSmashed)
     {
         this.name = name;
         this.score = score;
-        this.timePlayed = timePlayed;
+        this.timeRemaining = timeRemaining;
         this.windowsSmashed = windowsSmashed;
     }
 }
