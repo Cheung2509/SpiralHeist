@@ -1,25 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CarMovement : MonoBehaviour
 {
+    // Wheel collider 
     [HideInInspector]
     public WheelCollider frontL, frontR, rearL, rearR;
     [HideInInspector]
     public Transform t_frontL, t_frontR, t_rearL, t_rearR;
-    //[HideInInspector]
-    public AudioClip hornClip, idleClip, accelerationClip, decelerationClip;
-
-    public float speed, maxVelocity, maxRotation, brakeForce, carVelocity;
+    [SerializeField]
+    private GameObject Speedo;
+    [SerializeField]
+    private float speed, maxVelocity, maxRotation, brakeForce;
     private float horizontal, vertical, steeringAngle;
+    public float carVelocity;
 
+    // Audio 
+    [HideInInspector]
+    public AudioClip hornClip, idleClip, accelerationClip;
     private AudioSource audioSource;
+
+    // Cam
+    public Camera cam;
+
 
     private void Awake()
     {
        audioSource = GetComponent<AudioSource>();
-
     }
 
     private void FixedUpdate()
@@ -30,6 +39,13 @@ public class CarMovement : MonoBehaviour
         WheelPoses();
         Brakes();
         Audio();
+
+        Speedo.GetComponent<Text>().text = (Mathf.RoundToInt(carVelocity)).ToString();
+	}
+
+    private void LateUpdate()
+    {
+        ReverseCam();
     }
 
     private void GetInput()
@@ -40,12 +56,15 @@ public class CarMovement : MonoBehaviour
 
     private void Accelerate()
     {
-        rearL.motorTorque = vertical * speed;
-        rearR.motorTorque = vertical * speed;
+        if (carVelocity <= 50.0f) // THIS DOES NOT CLAMP THE CAR'S SPEED
+        {
+            frontL.motorTorque = vertical * speed;
+            frontR.motorTorque = vertical * speed;
+        }
 
         // Car's world space velocity
         carVelocity = Vector3.Dot(GetComponent<Rigidbody>().velocity, transform.forward);
-        //carVelocity = Mathf.Abs(carVelocity);
+        carVelocity = Mathf.Abs(carVelocity) * 1.5f;
 
         float current_speed = Vector3.Magnitude(GetComponent<Rigidbody>().velocity);  // test current object speed
 
@@ -59,7 +78,6 @@ public class CarMovement : MonoBehaviour
 
             GetComponent<Rigidbody>().AddForce(-brakeVelocity);  // apply opposing brake force
         }
-
     }
 
     private void Steer()
@@ -116,6 +134,16 @@ public class CarMovement : MonoBehaviour
         transform.rotation = quat;
     }
 
+    private void ReverseCam()
+    {
+        if (Input.GetKey(KeyCode.S))
+        {
+            cam.GetComponent<CameraController>().offset.z = 5.0f;
+        }
+        else
+            cam.GetComponent<CameraController>().offset.z = -5.0f;
+    }
+
     private void Audio()
     {  
         // Horn.
@@ -152,5 +180,4 @@ public class CarMovement : MonoBehaviour
             }
         }
     }
-
 }

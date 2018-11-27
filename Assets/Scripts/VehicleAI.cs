@@ -5,20 +5,24 @@ using UnityEngine;
 public class VehicleAI : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 0.0f;
+    private float maxSpeed = 0.0f;
+    [SerializeField]
+    private float currentSpeed = 0.0f;
     [SerializeField]
     private float lifetime = 3600.0f;
     [SerializeField]
-    private float maxDistance = 10000.0f;
+    private float maxDistance = 0.0f;
     [SerializeField]
     private float distance = 0.0f;
-
+    [SerializeField]
+    private List<GameObject> blockers;
+        
     public float distanceToRear = 0.0f;
     public float distanceToFront = 0.0f;
 
     void Update()
     {
-        transform.position += (Time.deltaTime * transform.forward * speed);
+        transform.position += (Time.deltaTime * transform.forward * currentSpeed);
 
         distance = Vector3.Distance(transform.position, transform.parent.position);
 
@@ -30,11 +34,29 @@ public class VehicleAI : MonoBehaviour
         {
             lifetime -= Time.deltaTime;
         }
+
+        if (blockers.Count > 0)
+        {
+            foreach (GameObject blocker in blockers)
+            {
+                if (currentSpeed > 0.0f)
+                {
+                    currentSpeed -= currentSpeed * 0.05f; ;
+                }
+            }
+        }
+        else
+        {
+            if (currentSpeed < maxSpeed)
+            {
+                currentSpeed += (maxSpeed - currentSpeed) * 0.01f;
+            }
+        }
     }
-    
+
     public void SetSpeed(float value)
     {
-        speed = value;
+        maxSpeed = value;
     }
 
     public void SetTimeUntilDeath(float value)
@@ -45,5 +67,15 @@ public class VehicleAI : MonoBehaviour
     public void SetMaxDistance(float value)
     {
         maxDistance = value;
-    }  
+    }
+
+    public void AddBlocker(GameObject vehicle)
+    {
+        blockers.Add(vehicle);
+    }
+
+    public void RemoveBlocker(GameObject vehicle)
+    {
+        blockers.Remove(vehicle);
+    }
 }

@@ -9,6 +9,10 @@ TagManager:
   - SceneManager
   - CarTypes
   - Spark
+  - AIVehicle
+  - BrakeTrigger
+  - ScoreManager
+  - LeaderboardCanvas
   layers:
   - Default
   - TransparentFX
@@ -21,7 +25,7 @@ TagManager:
   - TempCast
   - Walkable
   - Sparks
-  - 
+  - AIVehicle
   - 
   - 
   - 

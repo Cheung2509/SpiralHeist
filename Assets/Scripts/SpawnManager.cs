@@ -5,27 +5,24 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public float timeBetweenSpawns = 0.0f;
-    public float vehicleStartSpeed = 0.0f;
-    public bool vehicleHasLifetime = false;
-    public float vehicleLifetime = 0.0f;
-    public bool vehicleHasMaxDistance = false;
-    public float vehicleMaxDistance = 0.0f;
+    public float carMaxSpeed = 0.0f;
+    public bool carHasLifetime = false;
+    public float carLifetime = 0.0f;
+    public bool carHasMaxDistance = false;
+    public float maxDistance = 0.0f;
     public float separation = 0.0f;
 
     private GameObject player;
     private GameObject vehicle;
     private VehicleAI ai;
     private GameObject tempVehicle;
-
     [SerializeField]
-    private float timeSinceLastSpawn = 0.0f;
-    [SerializeField]
+    private float timeSinceLastSpawn = 10000.0f;
     private List<GameObject> VehicleTypes;
     [SerializeField]
     private float distanceToLastSpawned = 10000.0f;
     [SerializeField]
     private float necessaryDistanceToSpawn = 0.0f;
-    [SerializeField]
     private bool nextVehiclePicked = false;
 
     private void Start()
@@ -39,10 +36,7 @@ public class SpawnManager : MonoBehaviour
 
     void Update ()
     {
-		if (Vector3.Distance(transform.position, player.transform.position) < vehicleMaxDistance)
-        {
-            timeSinceLastSpawn += Time.deltaTime;
-        }
+        timeSinceLastSpawn += Time.deltaTime;
 
         if (!nextVehiclePicked)
         {
@@ -61,21 +55,21 @@ public class SpawnManager : MonoBehaviour
         }
 
         if (timeSinceLastSpawn > timeBetweenSpawns && distanceToLastSpawned > necessaryDistanceToSpawn)
-        {                      
+        {
             vehicle = Instantiate(tempVehicle, transform);
 
             ai = vehicle.GetComponent<VehicleAI>();
 
-            ai.SetSpeed(vehicleStartSpeed);
+            ai.SetSpeed(carMaxSpeed);
 
-            if (vehicleHasLifetime)
+            if (carHasLifetime)
             {
-                ai.SetTimeUntilDeath(vehicleLifetime);
+                ai.SetTimeUntilDeath(carLifetime);
             }
 
-            if (vehicleHasMaxDistance)
+            if (carHasMaxDistance)
             {
-                ai.SetMaxDistance(vehicleMaxDistance);
+                ai.SetMaxDistance(maxDistance);
             }
             
             timeSinceLastSpawn = 0.0f;
