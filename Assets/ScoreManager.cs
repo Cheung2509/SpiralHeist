@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> Figures;
 
-    private PlayerInfo playerInfo;
+    public PlayerInfo playerInfo;
 
     private int windows_smashed = 0;
 
@@ -16,7 +16,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-
+        DontDestroyOnLoad(gameObject);
     }
 
 
@@ -48,13 +48,8 @@ public class ScoreManager : MonoBehaviour
         addScore(15);
     }
 
-    public void GameOver()
+    private void GameOver()
     {
         playerInfo.timePlayed = time_taken;
-
-        Leaderboard leaderboard = new Leaderboard();
-        leaderboard.Load();
-        leaderboard.AddPlayer(playerInfo);
-        leaderboard.Save();
     }
 }

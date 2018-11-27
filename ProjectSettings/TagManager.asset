@@ -11,6 +11,7 @@ TagManager:
   - Spark
   - AIVehicle
   - BrakeTrigger
+  - ScoreManager
   layers:
   - Default
   - TransparentFX

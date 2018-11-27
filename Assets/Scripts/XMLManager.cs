@@ -17,7 +17,6 @@ public class _GameSaveLoad
 
     string _FileLocation = Application.dataPath;
     string _FileName = "leaderboard.xml";
-    PlayerInfo[] myData;
 
     // When the EGO is instansiated the Start will trigger 
     // so we setup our initial values for our local members 
@@ -58,7 +57,7 @@ public class _GameSaveLoad
     // Here we deserialize it back into its original form 
     public object DeserializeObject(string pXmlizedString)
     {
-        XmlSerializer xs = new XmlSerializer(typeof(PlayerInfo));
+        XmlSerializer xs = new XmlSerializer(typeof(List<PlayerInfo>));
         MemoryStream memoryStream = new MemoryStream(StringToUTF8ByteArray(pXmlizedString));
         XmlTextWriter xmlTextWriter = new XmlTextWriter(memoryStream, Encoding.UTF8);
         return xs.Deserialize(memoryStream);
