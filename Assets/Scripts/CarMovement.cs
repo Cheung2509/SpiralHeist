@@ -63,29 +63,29 @@ public class CarMovement : MonoBehaviour
     {
         ReverseCam();
 
-        Debug.Log(transform.rotation.eulerAngles.x + " " + transform.rotation.eulerAngles.z);
+        //Debug.Log(transform.rotation.eulerAngles.x + " " + transform.rotation.eulerAngles.z);
 
-        if ((transform.rotation.eulerAngles.x > 50.0f && transform.rotation.eulerAngles.x < 310.0f) ||
-            (transform.rotation.eulerAngles.x < -50.0f && transform.rotation.eulerAngles.x > -310.0f) ||
-            (transform.rotation.eulerAngles.z > 50.0f && transform.rotation.eulerAngles.z < 310.0f) ||
-            (transform.rotation.eulerAngles.z < -50.0f && transform.rotation.eulerAngles.z > -310.0f))
-        {
-            Debug.Log("Flipped");
-            flipText.enabled = true;
-            flipped = true;
-        }
-        else
-        {
-            flipText.enabled = false;
-            flipped = false;
-        }
+        //if ((transform.rotation.eulerAngles.x > 50.0f && transform.rotation.eulerAngles.x < 310.0f) ||
+        //    (transform.rotation.eulerAngles.x < -50.0f && transform.rotation.eulerAngles.x > -310.0f) ||
+        //    (transform.rotation.eulerAngles.z > 50.0f && transform.rotation.eulerAngles.z < 310.0f) ||
+        //    (transform.rotation.eulerAngles.z < -50.0f && transform.rotation.eulerAngles.z > -310.0f))
+        //{
+        //    Debug.Log("Flipped");
+        //    flipText.enabled = true;
+        //    flipped = true;
+        //}
+        //else
+        //{
+        //    flipText.enabled = false;
+        //    flipped = false;
+        //}
 
-        if (flipped && Input.GetKey("x"))
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
+        //if (flipped && Input.GetKey("x"))
+        //{
+        //    transform.position = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
                        
-            transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
-        }
+        //    transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+        //}
     }
 
     private void GetInput()
