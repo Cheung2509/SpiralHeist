@@ -14,6 +14,7 @@ TagManager:
   - ScoreManager
   - LeaderboardCanvas
   - Glass
+  - Window
   layers:
   - Default
   - TransparentFX
