@@ -31,7 +31,7 @@ public class NameGenerator : MonoBehaviour
         string surname = surnameGen.GenerateRandomWord();
 
         Text text = this.GetComponent<Text>();
-        text.text = "Somebody has stolen an Oscar award for Oscarless " + firstname + " " + surname + " according to sources.";
+        text.text = "Suspect has stolen an Oscar award for Oscarless " + firstname + " " + surname + " according to sources.";
     }
 
     public NameGenerator(string[] words, int order = 2, System.Random random = null)
