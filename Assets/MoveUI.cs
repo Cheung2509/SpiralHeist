@@ -30,7 +30,7 @@ public class MoveUI : MonoBehaviour
             }
             else
             {
-                transform.position += (move_direction) * move_speed;
+                transform.position += (move_direction) * move_speed * Time.deltaTime;
             }
         }
 	}
