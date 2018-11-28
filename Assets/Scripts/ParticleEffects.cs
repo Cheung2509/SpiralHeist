@@ -10,6 +10,9 @@ public class ParticleEffects : MonoBehaviour
     [SerializeField]
     private GameObject[] trailWheels;
 
+    [SerializeField]
+    private GameObject CrashAudioSource;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -63,6 +66,11 @@ public class ParticleEffects : MonoBehaviour
                 temp.transform.parent = transform;
                 temp.loop = false;
                 //temp.Emit(1);
+            }
+            if (collision.gameObject.tag != "Glass")
+            {
+                CrashAudioSource.GetComponent<AudioSource>().Play();
+                CrashAudioSource.GetComponent<AudioSource>().volume = carController.carVelocity / 100;
             }
         }
     }

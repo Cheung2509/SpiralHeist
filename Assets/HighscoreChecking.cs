@@ -22,7 +22,13 @@ public class HighscoreChecking : MonoBehaviour
 
         if (scoreManager.playerInfo.totalScore > leaderboard.playerInfos[(leaderboard.playerInfos.Count - 1)].totalScore)
         {
-            HighscoreInterface.SetActive(true);
+            StartCoroutine(SetHighscoreActive(2.0f));
         }
+    }
+
+    IEnumerator SetHighscoreActive(float time)
+    {
+        yield return new WaitForSeconds(time);
+        HighscoreInterface.SetActive(true);
     }
 }

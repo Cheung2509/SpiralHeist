@@ -15,16 +15,17 @@ public class CarMovement : MonoBehaviour
     [SerializeField]
     private float speed, maxVelocity, maxRotation, brakeForce;
     private float horizontal, vertical, steeringAngle;
-    public float carVelocity;
+    public float carVelocity, carSidewaysVelocity;
 
     // Audio 
     [HideInInspector]
-    public AudioClip hornClip, idleClip, accelerationClip;
+    public AudioClip hornClip, idleClip, accelerationClip, decellarationClip;
     private AudioSource audioSource;
+    [SerializeField]
+    private GameObject DriftAudioSource;
 
     // Cam
     public Camera cam;
-
 
     private void Awake()
     {
@@ -64,7 +65,10 @@ public class CarMovement : MonoBehaviour
 
         // Car's world space velocity
         carVelocity = Vector3.Dot(GetComponent<Rigidbody>().velocity, transform.forward);
-        carVelocity = Mathf.Abs(carVelocity) * 1.5f;
+        carVelocity = Mathf.Abs(carVelocity) * 3f;
+
+        carSidewaysVelocity = Vector3.Dot(GetComponent<Rigidbody>().velocity, transform.right);
+        carSidewaysVelocity = Mathf.Abs(carSidewaysVelocity);
 
         float current_speed = Vector3.Magnitude(GetComponent<Rigidbody>().velocity);  // test current object speed
 
@@ -163,21 +167,37 @@ public class CarMovement : MonoBehaviour
             }
         }
 
-        // Acceleration.
-        if (Input.GetKey(KeyCode.W))
+        audioSource.pitch = carVelocity/25;
+
+        if (carSidewaysVelocity > 2)
         {
-            if (!audioSource.isPlaying)
+            if(!DriftAudioSource.GetComponent<AudioSource>().isPlaying)
             {
-                audioSource.clip = accelerationClip;
-                audioSource.Play();
+                DriftAudioSource.GetComponent<AudioSource>().Play();
             }
+
+            DriftAudioSource.GetComponent<AudioSource>().volume = ((carSidewaysVelocity / 20) - 0.2f);
         }
-        else if(!Input.GetKey(KeyCode.W))
+        else
         {
-            if (audioSource.clip == accelerationClip && audioSource.isPlaying)
-            {
-                audioSource.Stop();
-            }
+            DriftAudioSource.GetComponent<AudioSource>().Stop();
         }
+
+        //// Acceleration.
+        //if (Input.GetKey(KeyCode.W))
+        //{
+        //    if (!audioSource.isPlaying || audioSource.clip == decellarationClip)
+        //    {
+        //        audioSource.clip = idleClip;
+        //        audioSource.Play();
+        //    }
+        //}
+        //else if(!Input.GetKey(KeyCode.W))
+        //{
+        //    if (audioSource.clip == idleClip && audioSource.isPlaying)
+        //    {
+        //        audioSource.pitch -= (Time.deltaTime * 0.1f);
+        //    }
+        //}
     }
 }
