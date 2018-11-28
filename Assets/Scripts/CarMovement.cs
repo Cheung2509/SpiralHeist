@@ -173,7 +173,14 @@ public class CarMovement : MonoBehaviour
             }
         }
 
-        audioSource.pitch = carVelocity/25;
+        if (carVelocity < 1)
+        {
+            audioSource.pitch = 0.3f;
+        }
+        else
+        {
+            audioSource.pitch = carVelocity / 25;
+        }
 
         if (carSidewaysVelocity > 2)
         {
