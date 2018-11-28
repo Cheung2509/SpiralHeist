@@ -32,7 +32,6 @@ public class Timer : MonoBehaviour
         }
         else
         {
-            Debug.Log("here");
             time_remaining = time_remaining - Time.deltaTime;
             seconds = Mathf.RoundToInt(time_remaining);
             tens_secs = 0;

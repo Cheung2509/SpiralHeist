@@ -9,7 +9,7 @@ public class WindowScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Smash");
+            //Debug.Log("Smash");
 
             foreach (Transform child in transform)
             { 
@@ -18,7 +18,11 @@ public class WindowScript : MonoBehaviour
                 child.GetComponent<Rigidbody>().AddExplosionForce(100,other.transform.position, 10);
             }
 
-            
+            if(GetComponent<AudioSource>())
+            {
+                GetComponent<AudioSource>().Play();
+            }
+
             GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>().WindowSmashed();
         }
     }

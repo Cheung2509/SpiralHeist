@@ -15,6 +15,13 @@ public class NumberCountEffect : MonoBehaviour
 
     private float time_passed = 0;
 
+    [SerializeField]
+    private float time_till_audio_start = 0;
+
+    [SerializeField]
+    private GameObject AudioSource;
+
+    private bool has_played = false;
 
     void Start()
     {
@@ -25,10 +32,17 @@ public class NumberCountEffect : MonoBehaviour
     {
         time_passed += Time.deltaTime;
 
+        if(time_passed > time_till_audio_start && has_played == false)
+        {
+            AudioSource.GetComponent<AudioSource>().Play();
+            has_played = true;
+        }
+
         if (time_passed > time_to_target_num)
         {
             currentNumber = targetNumber;
             GetComponent<Text>().text = Mathf.RoundToInt(currentNumber).ToString();
+            AudioSource.GetComponent<AudioSource>().Stop();
         }
         else
         {
