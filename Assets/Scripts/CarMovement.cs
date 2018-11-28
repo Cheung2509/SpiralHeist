@@ -24,6 +24,10 @@ public class CarMovement : MonoBehaviour
     [SerializeField]
     private GameObject DriftAudioSource;
 
+    //I know it should be in particle effects but eh
+    [SerializeField]
+    private GameObject[] trailWheels;
+
     // Cam
     public Camera cam;
 
@@ -194,6 +198,26 @@ public class CarMovement : MonoBehaviour
         else
         {
             DriftAudioSource.GetComponent<AudioSource>().Stop();
+        }
+
+
+        if (carSidewaysVelocity > 4)
+        {
+            foreach (GameObject wheel in trailWheels)
+            {
+                wheel.GetComponent<TrailRenderer>().emitting = true;
+            }
+            rearL.GetComponent<ParticleSystem>().Play();
+            rearR.GetComponent<ParticleSystem>().Play();
+        }
+        else
+        {
+            foreach (GameObject wheel in trailWheels)
+            {
+                wheel.GetComponent<TrailRenderer>().emitting = false;
+            }
+            rearL.GetComponent<ParticleSystem>().Stop();
+            rearR.GetComponent<ParticleSystem>().Stop();
         }
 
         //// Acceleration.

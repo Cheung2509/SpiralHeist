@@ -7,8 +7,6 @@ public class ParticleEffects : MonoBehaviour
     public ParticleSystem sparks;
     public CarMovement carController;
     public MeshCollider boxCollider;
-    [SerializeField]
-    private GameObject[] trailWheels;
 
     [SerializeField]
     private GameObject CrashAudioSource;
@@ -19,24 +17,6 @@ public class ParticleEffects : MonoBehaviour
 
         carController = GetComponent<CarMovement>();
 	}
-
-    private void Update()
-    {
-        if ((GetComponent<CarMovement>().carVelocity > 10) && (Input.GetAxis("Horizontal") != 0))
-        {
-            foreach (GameObject wheel in trailWheels)
-            {
-                wheel.GetComponent<TrailRenderer>().emitting = true;
-            }
-        }
-        else
-        {
-            foreach (GameObject wheel in trailWheels)
-            {
-                wheel.GetComponent<TrailRenderer>().emitting = false;
-            }
-        }
-    }
 
     private void OnCollisionStay(Collision collision)
     {
