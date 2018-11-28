@@ -1231,6 +1231,81 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bac183e485c1534192364bdfe6f4300, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1025997269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1025997270}
+  - component: {fileID: 1025997272}
+  - component: {fileID: 1025997271}
+  m_Layer: 5
+  m_Name: 'Breaking News:'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1025997270
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1025997269}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1861375494}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -376, y: -148}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1025997271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1025997269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Breaking News:'
+--- !u!222 &1025997272
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1025997269}
+  m_CullTransparentMesh: 0
 --- !u!1 &1056797481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1686,13 +1761,62 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114887692426146354, guid: 5919c95c4c45e6647a0fbc2c076a4a00,
+    - target: {fileID: 224423535772458908, guid: 5919c95c4c45e6647a0fbc2c076a4a00,
         type: 2}
-      propertyPath: start_mins
-      value: 4
+      propertyPath: m_AnchoredPosition.y
+      value: -190.5
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114621015997377380, guid: 5919c95c4c45e6647a0fbc2c076a4a00, type: 2}
+    - target: {fileID: 114088684140029324, guid: 5919c95c4c45e6647a0fbc2c076a4a00,
+        type: 2}
+      propertyPath: m_FontData.m_RichText
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224423535772458908, guid: 5919c95c4c45e6647a0fbc2c076a4a00,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: -481
+      objectReference: {fileID: 0}
+    - target: {fileID: 114088684140029324, guid: 5919c95c4c45e6647a0fbc2c076a4a00,
+        type: 2}
+      propertyPath: m_FontData.m_AlignByGeometry
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114088684140029324, guid: 5919c95c4c45e6647a0fbc2c076a4a00,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 224423535772458908, guid: 5919c95c4c45e6647a0fbc2c076a4a00,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -173
+      objectReference: {fileID: 0}
+    - target: {fileID: 224423535772458908, guid: 5919c95c4c45e6647a0fbc2c076a4a00,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -354
+      objectReference: {fileID: 0}
+    - target: {fileID: 114088684140029324, guid: 5919c95c4c45e6647a0fbc2c076a4a00,
+        type: 2}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114088684140029324, guid: 5919c95c4c45e6647a0fbc2c076a4a00,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114088684140029324, guid: 5919c95c4c45e6647a0fbc2c076a4a00,
+        type: 2}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224423535772458908, guid: 5919c95c4c45e6647a0fbc2c076a4a00,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5919c95c4c45e6647a0fbc2c076a4a00, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1857676476 stripped
@@ -1728,6 +1852,11 @@ GameObject:
 --- !u!1 &1861375493 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1492069765544540, guid: 5919c95c4c45e6647a0fbc2c076a4a00,
+    type: 2}
+  m_PrefabInternal: {fileID: 1857676475}
+--- !u!224 &1861375494 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 224937330358855980, guid: 5919c95c4c45e6647a0fbc2c076a4a00,
     type: 2}
   m_PrefabInternal: {fileID: 1857676475}
 --- !u!1001 &1916131145

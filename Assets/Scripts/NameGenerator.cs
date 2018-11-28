@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-
+using UnityEngine;
+using UnityEngine.UI;
 
 class Character
 {
@@ -13,31 +15,42 @@ class Character
 }
 
 
-public class ProceduralNameGenerator
+public class NameGenerator : MonoBehaviour
 {
     int order;
-    Random random;
+    System.Random random;
     Dictionary<string, List<Character>> chains = new Dictionary<string, List<Character>>();
     HashSet<string> wordPatterns = new HashSet<string>();
 
+    private void Start()
+    {
+        NameGenerator firstnameGen = new NameGenerator("/first-names.txt");
+        NameGenerator surnameGen = new NameGenerator("/names.txt");
 
-    public ProceduralNameGenerator(string[] words, int order = 2, Random random = null)
+        string firstname = firstnameGen.GenerateRandomWord();
+        string surname = surnameGen.GenerateRandomWord();
+
+        Text text = this.GetComponent<Text>();
+        text.text = "Somebody has stolen an Oscar award for Oscarless " + firstname + " " + surname + " according to sources.";
+    }
+
+    public NameGenerator(string[] words, int order = 2, System.Random random = null)
     {
         Initialize(words, order, random);
     }
 
 
-    public ProceduralNameGenerator(string filename, int order = 2, Random random = null)
+    public NameGenerator(string filename, int order = 2, System.Random random = null)
     {
-        string inputfile = filename;
+        string inputfile = Application.dataPath + filename;
         string[] words = File.ReadAllLines(inputfile);
         Initialize(words, order, random);
     }
 
 
-    void Initialize(string[] words, int order, Random random)
+    void Initialize(string[] words, int order, System.Random random)
     {
-        this.random = random == null ? new Random() : random;
+        this.random = random == null ? new System.Random() : random;
         AnalyzeWords(words, order);
     }
 

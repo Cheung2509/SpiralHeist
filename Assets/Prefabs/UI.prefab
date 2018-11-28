@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224027077627626492}
-  - component: {fileID: 114621015997377380}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -89,6 +88,7 @@ GameObject:
   - component: {fileID: 224423535772458908}
   - component: {fileID: 222358507049565404}
   - component: {fileID: 114088684140029324}
+  - component: {fileID: 114378424709816388}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -359,7 +359,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '*** STEALS OSCAR!'
+  m_Text: 
 --- !u!114 &114133541737901290
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -529,23 +529,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Mph
---- !u!114 &114621015997377380
+--- !u!114 &114378424709816388
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1032940322530536}
+  m_GameObject: {fileID: 1231558136065758}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c09965301609f6489ad74c3da9d859a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e08b37e15c340846a71759e1d180318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Figures:
-  - {fileID: 1852540949552962}
-  - {fileID: 1752416435664140}
-  - {fileID: 1753545022093792}
-  - {fileID: 1616940648010740}
-  - {fileID: 1716875005175448}
 --- !u!114 &114706674805372226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -717,6 +711,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 1143346840549978}
+  start_mins: 4
+  time_remaining: 0
 --- !u!114 &114913725002810020
 MonoBehaviour:
   m_ObjectHideFlags: 1
