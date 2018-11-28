@@ -37,32 +37,38 @@ public class ParticleEffects : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        foreach (ContactPoint contact in collision.contacts)
+        if (collision.gameObject.tag == "Window")
         {
-            if (carController.carVelocity > 0)
+            foreach (ContactPoint contact in collision.contacts)
             {
-                Vector3 pos = contact.point;
-                Quaternion rot = Quaternion.FromToRotation(Vector3.back, contact.normal);
-                ParticleSystem temp = Instantiate(sparks, pos, rot);
-                temp.transform.parent = transform;
-                temp.loop = false;
-                //temp.Emit(1);
+                if (carController.carVelocity > 0)
+                {
+                    Vector3 pos = contact.point;
+                    Quaternion rot = Quaternion.FromToRotation(Vector3.back, contact.normal);
+                    ParticleSystem temp = Instantiate(sparks, pos, rot);
+                    temp.transform.parent = transform;
+                    temp.loop = false;
+                    //temp.Emit(1);
+                }
             }
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        foreach (ContactPoint contact in collision.contacts)
+        if (collision.gameObject.tag == "Window")
         {
-            if(carController.carVelocity > 0)
+            foreach (ContactPoint contact in collision.contacts)
             {
-                Vector3 pos = contact.point;
-                Quaternion rot = Quaternion.FromToRotation(Vector3.back, contact.normal);
-                ParticleSystem temp = Instantiate(sparks, pos, rot);
-                temp.transform.parent = transform;
-                temp.loop = false;
-                //temp.Emit(1);
+                if (carController.carVelocity > 0.5)
+                {
+                    Vector3 pos = contact.point;
+                    Quaternion rot = Quaternion.FromToRotation(Vector3.back, contact.normal);
+                    ParticleSystem temp = Instantiate(sparks, pos, rot);
+                    temp.transform.parent = transform;
+                    temp.loop = false;
+                    //temp.Emit(1);
+                }
             }
         }
     }
