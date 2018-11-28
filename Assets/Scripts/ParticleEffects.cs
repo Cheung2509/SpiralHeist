@@ -40,7 +40,7 @@ public class ParticleEffects : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Window")
+        if (collision.gameObject.tag != "Glass")
         {
             foreach (ContactPoint contact in collision.contacts)
             {
@@ -59,7 +59,7 @@ public class ParticleEffects : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Window")
+        if (collision.gameObject.tag != "Glass")
         {
             foreach (ContactPoint contact in collision.contacts)
             {
