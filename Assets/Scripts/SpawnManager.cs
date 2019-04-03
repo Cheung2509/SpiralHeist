@@ -31,7 +31,14 @@ public class SpawnManager : MonoBehaviour
         vehicle = null;
         tempVehicle = null;
 
-        VehicleTypes = GameObject.FindGameObjectWithTag("CarTypes").GetComponent<ListOfVehicleTypes>().GetList();
+        if (GetComponentInChildren<ListOfVehicleTypes>())
+        {
+            VehicleTypes = GetComponentInChildren<ListOfVehicleTypes>().GetList();
+        }
+        else
+        {
+            Debug.Log("No List of Vehicles Attached");
+        }
     }
 
     void Update ()
@@ -40,7 +47,7 @@ public class SpawnManager : MonoBehaviour
 
         if (!nextVehiclePicked)
         {
-            tempVehicle = VehicleTypes[Random.Range(0, VehicleTypes.Count)];
+            tempVehicle = VehicleTypes[Random.Range(0, VehicleTypes.Count - 1)];
 
             if (vehicle != null)
             {
