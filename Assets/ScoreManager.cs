@@ -17,13 +17,15 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
+        playerInfo.score = 50000;
+
         DontDestroyOnLoad(gameObject);
     }
 
 
-    public void addScore(int score)
+    public void RemoveScore(int score)
     {
-        playerInfo.score += score;
+        playerInfo.score -= score;
 
         string temp = playerInfo.score.ToString();
         while(temp.Length < 5)
@@ -44,9 +46,9 @@ public class ScoreManager : MonoBehaviour
         playerInfo.windowsSmashed++;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        //addScore(15);
+        RemoveScore(3);
     }
 
     public void GameOver()

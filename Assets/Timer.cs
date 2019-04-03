@@ -26,7 +26,7 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        if (time_remaining <= 0)
+        if (time_remaining < 0)
         {
             time_remaining = 0;
         }
@@ -36,23 +36,19 @@ public class Timer : MonoBehaviour
             seconds = Mathf.RoundToInt(time_remaining);
             tens_secs = 0;
             minutes = 0;
-            while (seconds > 10)
+            while (seconds >= 10)
             {
                 seconds = seconds - 10;
                 tens_secs++;
             }
 
-            while (tens_secs > 6)
+            while (tens_secs >= 6)
             {
                 tens_secs = tens_secs - 6;
                 minutes++;
             }
         }
 
-        if (seconds == 10)
-        {
-            seconds = 9;
-        }
         timer.GetComponent<Text>().text = minutes + ":" + tens_secs + seconds;
     }
 }

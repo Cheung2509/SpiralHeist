@@ -6,6 +6,9 @@ public class SpawnManager : MonoBehaviour
 {
     public float timeBetweenSpawns = 0.0f;
     public float carMaxSpeed = 0.0f;
+    public float carAcceleration = 0.01f;
+    public float carRotationSpeed = 0.1f;
+    public float carDistanceToPoint = 1.0f;
     public bool carHasLifetime = false;
     public float carLifetime = 0.0f;
     public bool carHasMaxDistance = false;
@@ -47,7 +50,7 @@ public class SpawnManager : MonoBehaviour
 
         if (!nextVehiclePicked)
         {
-            tempVehicle = VehicleTypes[Random.Range(0, VehicleTypes.Count - 1)];
+            tempVehicle = VehicleTypes[Random.Range(0, VehicleTypes.Count)];
 
             if (vehicle != null)
             {
@@ -67,7 +70,26 @@ public class SpawnManager : MonoBehaviour
 
             ai = vehicle.GetComponent<VehicleAI>();
 
-            ai.SetSpeed(carMaxSpeed);
+
+            if (carMaxSpeed > 0.0f)
+            {
+                ai.SetSpeed(carMaxSpeed);
+            }
+
+            if (carAcceleration > 0.0f)
+            {
+                ai.SetAcceleration(carAcceleration);
+            }
+
+            if (carRotationSpeed > 0.0f)
+            {
+                ai.SetRotationSpeed(carRotationSpeed);
+            }
+
+            if (carDistanceToPoint > 0.0f)
+            {
+                ai.SetDistanceToPoint(carDistanceToPoint);
+            }
 
             if (carHasLifetime)
             {
