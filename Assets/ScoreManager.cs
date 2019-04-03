@@ -8,17 +8,24 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> Figures;
 
-    private PlayerInfo playerInfo;
+    public PlayerInfo playerInfo;
+
+    private int windows_smashed = 0;
+
+    [SerializeField]
+    private GameObject timer;
 
     private void Start()
     {
+        playerInfo.score = 50000;
 
+        DontDestroyOnLoad(gameObject);
     }
 
 
-    void addScore(int score)
+    public void RemoveScore(int score)
     {
-        playerInfo.score += score;
+        playerInfo.score -= score;
 
         string temp = playerInfo.score.ToString();
         while(temp.Length < 5)
@@ -34,8 +41,18 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void WindowSmashed()
     {
-        addScore(15);
+        playerInfo.windowsSmashed++;
+    }
+
+    private void FixedUpdate()
+    {
+        RemoveScore(3);
+    }
+
+    public void GameOver()
+    {
+        playerInfo.timeRemaining = timer.GetComponent<Timer>().time_remaining;
     }
 }

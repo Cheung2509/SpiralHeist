@@ -8,35 +8,47 @@ public class Timer : MonoBehaviour
     [SerializeField]
     private GameObject timer;
 
-    private float time_passed = 0;
+    [SerializeField]
+    private int start_mins;
+
+    public float time_remaining = 0;
     private int minutes = 0;
     private int tens_secs = 0;
     private int seconds = 0;
 
     private string display_time = "0:00";
 
-	// Update is called once per frame
-	void Update ()
+    void Start()
     {
-        time_passed += Time.deltaTime;
+        minutes = start_mins;
+        time_remaining = minutes * 60;
+    }
 
-        if(time_passed > 9.9f)
+    void Update()
+    {
+        if (time_remaining < 0)
         {
-            tens_secs++;
-            time_passed = 0;
-            seconds = 0;
+            time_remaining = 0;
         }
-        if(tens_secs > 5)
+        else
         {
-            minutes++;
+            time_remaining = time_remaining - Time.deltaTime;
+            seconds = Mathf.RoundToInt(time_remaining);
             tens_secs = 0;
-            seconds = 0;
+            minutes = 0;
+            while (seconds >= 10)
+            {
+                seconds = seconds - 10;
+                tens_secs++;
+            }
+
+            while (tens_secs >= 6)
+            {
+                tens_secs = tens_secs - 6;
+                minutes++;
+            }
         }
 
-        seconds = Mathf.RoundToInt(time_passed);
-
-        display_time = minutes + ":" + tens_secs + seconds;
-
-        timer.GetComponent<Text>().text = display_time;
-	}
+        timer.GetComponent<Text>().text = minutes + ":" + tens_secs + seconds;
+    }
 }

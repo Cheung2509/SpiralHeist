@@ -742,7 +742,7 @@ Rigidbody:
   m_GameObject: {fileID: 1578651698475528}
   serializedVersion: 2
   m_Mass: 1000
-  m_Drag: 0.1
+  m_Drag: 0.25
   m_AngularDrag: 3
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -987,6 +987,10 @@ MonoBehaviour:
   maxRotation: 50
   brakeForce: 90000
   carVelocity: 0.0000005545452
+  hornClip: {fileID: 0}
+  idleClip: {fileID: 0}
+  accelerationClip: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!146 &146809163789259200
 WheelCollider:
   m_ObjectHideFlags: 1

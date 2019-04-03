@@ -13,13 +13,25 @@ public class MoveUI : MonoBehaviour
     [SerializeField]
     private bool moving = false;
 
+    [SerializeField]
+    private Transform target_pos;
+
+
+
 	
 	// Update is called once per frame
 	void Update ()
     {
 		if(moving)
         {
-            transform.position += (move_direction) * move_speed;
+            if (target_pos && (Vector3.Distance(transform.position, target_pos.position) > 1))
+            {
+                GetComponent<RectTransform>().position = Vector3.MoveTowards(GetComponent<RectTransform>().position, target_pos.position, move_speed);
+            }
+            else
+            {
+                transform.position += (move_direction) * move_speed * Time.deltaTime;
+            }
         }
 	}
 

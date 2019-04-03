@@ -11,6 +11,12 @@ TagManager:
   - Spark
   - AIVehicle
   - BrakeTrigger
+  - ScoreManager
+  - LeaderboardCanvas
+  - Glass
+  - Window
+  - TravelPoints
+  - point
   layers:
   - Default
   - TransparentFX

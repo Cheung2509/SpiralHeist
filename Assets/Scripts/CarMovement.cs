@@ -15,12 +15,23 @@ public class CarMovement : MonoBehaviour
     [SerializeField]
     private float speed, maxVelocity, maxRotation, brakeForce;
     private float horizontal, vertical, steeringAngle;
-    public float carVelocity;
+    public float carVelocity, carSidewaysVelocity;
+
+    // Flip Back Over Mechanic
+    public bool flipped = false;
+
+    public Text flipText;
 
     // Audio 
     [HideInInspector]
-    public AudioClip hornClip, idleClip, accelerationClip;
+    public AudioClip hornClip, idleClip, accelerationClip, decellarationClip;
     private AudioSource audioSource;
+    [SerializeField]
+    private GameObject DriftAudioSource;
+
+    //I know it should be in particle effects but eh
+    [SerializeField]
+    private GameObject[] trailWheels;
 
     // Cam
     public Camera cam;
@@ -51,6 +62,30 @@ public class CarMovement : MonoBehaviour
     private void LateUpdate()
     {
         ReverseCam();
+
+        //Debug.Log(transform.rotation.eulerAngles.x + " " + transform.rotation.eulerAngles.z);
+
+        //if ((transform.rotation.eulerAngles.x > 50.0f && transform.rotation.eulerAngles.x < 310.0f) ||
+        //    (transform.rotation.eulerAngles.x < -50.0f && transform.rotation.eulerAngles.x > -310.0f) ||
+        //    (transform.rotation.eulerAngles.z > 50.0f && transform.rotation.eulerAngles.z < 310.0f) ||
+        //    (transform.rotation.eulerAngles.z < -50.0f && transform.rotation.eulerAngles.z > -310.0f))
+        //{
+        //    Debug.Log("Flipped");
+        //    flipText.enabled = true;
+        //    flipped = true;
+        //}
+        //else
+        //{
+        //    flipText.enabled = false;
+        //    flipped = false;
+        //}
+
+        //if (flipped && Input.GetKey("x"))
+        //{
+        //    transform.position = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
+                       
+        //    transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+        //}
     }
 
     private void GetInput()
@@ -69,7 +104,10 @@ public class CarMovement : MonoBehaviour
 
         // Car's world space velocity
         carVelocity = Vector3.Dot(GetComponent<Rigidbody>().velocity, transform.forward);
-        carVelocity = Mathf.Abs(carVelocity) * 1.5f;
+        carVelocity = Mathf.Abs(carVelocity) * 3f;
+
+        carSidewaysVelocity = Vector3.Dot(GetComponent<Rigidbody>().velocity, transform.right);
+        carSidewaysVelocity = Mathf.Abs(carSidewaysVelocity);
 
         float current_speed = Vector3.Magnitude(GetComponent<Rigidbody>().velocity);  // test current object speed
 
@@ -168,22 +206,65 @@ public class CarMovement : MonoBehaviour
             }
         }
 
-        // Acceleration.
-        if (Input.GetKey(KeyCode.W))
+        if (carVelocity < 1)
         {
-            if (!audioSource.isPlaying)
-            {
-                audioSource.clip = accelerationClip;
-                audioSource.Play();
-            }
+            audioSource.pitch = 0.3f;
         }
-        else if(!Input.GetKey(KeyCode.W))
+        else
         {
-            if (audioSource.clip == accelerationClip && audioSource.isPlaying)
-            {
-                audioSource.Stop();
-            }
+            audioSource.pitch = carVelocity / 25;
         }
+
+        if (carSidewaysVelocity > 2)
+        {
+            if(!DriftAudioSource.GetComponent<AudioSource>().isPlaying)
+            {
+                DriftAudioSource.GetComponent<AudioSource>().Play();
+            }
+
+            DriftAudioSource.GetComponent<AudioSource>().volume = ((carSidewaysVelocity / 20) - 0.2f);
+        }
+        else
+        {
+            DriftAudioSource.GetComponent<AudioSource>().Stop();
+        }
+
+
+        if (carSidewaysVelocity > 4)
+        {
+            foreach (GameObject wheel in trailWheels)
+            {
+                wheel.GetComponent<TrailRenderer>().emitting = true;
+            }
+            rearL.GetComponent<ParticleSystem>().Play();
+            rearR.GetComponent<ParticleSystem>().Play();
+        }
+        else
+        {
+            foreach (GameObject wheel in trailWheels)
+            {
+                wheel.GetComponent<TrailRenderer>().emitting = false;
+            }
+            rearL.GetComponent<ParticleSystem>().Stop();
+            rearR.GetComponent<ParticleSystem>().Stop();
+        }
+
+        //// Acceleration.
+        //if (Input.GetKey(KeyCode.W))
+        //{
+        //    if (!audioSource.isPlaying || audioSource.clip == decellarationClip)
+        //    {
+        //        audioSource.clip = idleClip;
+        //        audioSource.Play();
+        //    }
+        //}
+        //else if(!Input.GetKey(KeyCode.W))
+        //{
+        //    if (audioSource.clip == idleClip && audioSource.isPlaying)
+        //    {
+        //        audioSource.pitch -= (Time.deltaTime * 0.1f);
+        //    }
+        //}
     }
 
 }
